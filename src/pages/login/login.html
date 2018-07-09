@@ -6,18 +6,18 @@
     <div padding-horizontal text-center class="animated fadeInDown">
       <div class="logo"></div>
       <h2 ion-text class="text-primary">
-        <strong>Ionic 3</strong> Start Theme
+        <strong>Doctor</strong> Strange
       </h2>
     </div>
 
     <!-- Login form -->
-    <form class="list-form">
+    <form class="list-form"  [formGroup]="loginForm" (ngSubmit)="submitLogin()">
       <ion-item>
         <ion-label floating>
           <ion-icon name="mail" item-start class="text-primary"></ion-icon>
           Email
         </ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -25,21 +25,20 @@
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Password
         </ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" formControlName = "password"></ion-input>
       </ion-item>
-    </form>
 
     <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
 
     <div>
-      <button ion-button icon-start block color="dark" tappable (click)="login()">
+      <button ion-button icon-start block color="dark" tappable >
         <ion-icon name="log-in"></ion-icon>
         SIGN IN
       </button>
 
-      <p text-center ion-text color="secondary">Or Sign in with:</p>
+      <!-- <p text-center ion-text color="secondary">Or Sign in with:</p> -->
 
-      <ion-grid>
+      <!-- <ion-grid>
         <ion-row>
           <ion-col col-4>
             <button ion-button icon-only block class="btn-facebook">
@@ -57,9 +56,11 @@
             </button>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
 
     </div>
+  </form>
+
 
 
     <!-- Other links -->

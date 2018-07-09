@@ -24,6 +24,9 @@ import {SearchLocationPage} from "../pages/search-location/search-location";
 import {TripDetailPage} from "../pages/trip-detail/trip-detail";
 import {TripsPage} from "../pages/trips/trips";
 import {LocalWeatherPage} from "../pages/local-weather/local-weather";
+import { AuthProvider } from '../providers/auth/auth';
+import { HttpModule } from '@angular/http';
+
 
 // import services
 // end import services
@@ -49,6 +52,7 @@ import {LocalWeatherPage} from "../pages/local-weather/local-weather";
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {
       scrollPadding: false,
       scrollAssist: true,
@@ -79,7 +83,8 @@ import {LocalWeatherPage} from "../pages/local-weather/local-weather";
     Keyboard,
     ActivityService,
     TripService,
-    WeatherProvider
+    WeatherProvider,
+    AuthProvider
   ]
 })
 
