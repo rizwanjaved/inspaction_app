@@ -8,6 +8,7 @@ import {TripsPage} from "../trips/trips";
 import {SearchLocationPage} from "../search-location/search-location";
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -28,7 +29,7 @@ export class HomePage {
     // this.search.dropOff = "Same as pickup";
     this.storage.get('pickup').then((val) => {
       if (val === null) {
-        this.search.name = "Rio de Janeiro, Brazil"
+        this.search.name = "Rio de Janeiro, Brazil";
       } else {
         this.search.name = val;
       }

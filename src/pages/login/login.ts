@@ -3,7 +3,11 @@ import {NavController, AlertController, ToastController, MenuController} from "i
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {AuthProvider} from '../../providers/auth/auth'
+import {AuthProvider} from '../../providers/auth/auth';
+import {NotificationsProvider} from '../../providers/notifications/notifications';
+import { Storage } from '@ionic/storage';
+
+
 
 
 @Component({
@@ -18,7 +22,9 @@ export class LoginPage {
     public fb:FormBuilder, 
     public menu: MenuController, 
     public toastCtrl: ToastController,
-    public auth :AuthProvider
+    public auth :AuthProvider,
+    private storage: Storage,
+    public notify : NotificationsProvider
   ) {
     this.menu.swipeEnable(false);
     this.loginForm = this.fb.group({
@@ -30,9 +36,12 @@ export class LoginPage {
   submitLogin() {
     this.auth.login(this.loginForm.value)
       .subscribe(res =>{
-        console.log('res',res);
-    });
-    console.log('login form', this.loginForm.value);
+       this.Validate(JSON.parse(res));
+      },
+      err =>{
+       this.Validate(false);
+      }
+      );
   }
 
   // go to register page
@@ -41,8 +50,23 @@ export class LoginPage {
   }
 
   // login and go to home page
-  login() {
-    // this.nav.setRoot(HomePage);
+  Validate(response) {
+    let msg = "Name or password is incorrect";
+    console.log('res', response);
+    if(!response || (response && response.error)){
+      this.notify.simpleTimeToast(msg);
+    } else {
+      if(response.name !== undefined && response.name !== null) {
+        this.login(response);
+      } else {
+        this.notify.simpleTimeToast(msg);
+      }
+    } 
+  }
+
+  login(user) {
+    this.storage.set('user', user);
+    this.nav.setRoot(HomePage);
   }
 
   forgotPass() {

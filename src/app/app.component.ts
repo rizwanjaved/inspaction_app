@@ -8,6 +8,10 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
+import {Storage} from '@ionic/storage';
+import {AuthProvider} from '../providers/auth/auth';
+
+
 
 export interface MenuItem {
     title: string;
@@ -22,7 +26,8 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any;
+  user :any;
 
   appMenuItems: Array<MenuItem>;
 
@@ -30,7 +35,9 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public keyboard: Keyboard
+    public keyboard: Keyboard,
+    private storage: Storage,
+    public auth:AuthProvider
   ) {
     this.initializeApp();
 
@@ -38,6 +45,7 @@ export class MyApp {
       {title: 'Home', component: HomePage, icon: 'home'},
       {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
+    this.redirect();
   }
 
   initializeApp() {
@@ -54,6 +62,19 @@ export class MyApp {
 
       //*** Control Keyboard
       this.keyboard.disableScroll(true);
+
+    });
+  }
+
+  redirect() {
+    this.storage.get('user').then(data => {
+      console.log('user-data', data);
+      if(data && data.name !== null) {
+        this.rootPage = HomePage;
+        this.user = data;
+      } else {
+        this.rootPage = LoginPage;
+      }
     });
   }
 
@@ -64,7 +85,19 @@ export class MyApp {
   }
 
   logout() {
-    this.nav.setRoot(LoginPage);
+    this.auth.logout()
+    .subscribe(res => {
+     if(res.success == 200) {
+        this.storage.remove('user');
+        this.nav.setRoot(LoginPage);
+     } else {
+      this.storage.remove('user');
+      this.nav.setRoot(LoginPage);
+     }
+     },
+     err => {
+      this.storage.remove('user');
+      this.nav.setRoot(LoginPage);
+     });
   }
-
 }

@@ -26,6 +26,7 @@ import {TripsPage} from "../pages/trips/trips";
 import {LocalWeatherPage} from "../pages/local-weather/local-weather";
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
+import { NotificationsProvider } from '../providers/notifications/notifications';
 
 
 // import services
@@ -59,7 +60,7 @@ import { HttpModule } from '@angular/http';
       autoFocusAssist: false
     }),
     IonicStorageModule.forRoot({
-      name: '__ionic3_start_theme',
+      name: 'performa',
         driverOrder: ['indexeddb', 'sqlite', 'websql']
     })
   ],
@@ -84,7 +85,8 @@ import { HttpModule } from '@angular/http';
     ActivityService,
     TripService,
     WeatherProvider,
-    AuthProvider
+    AuthProvider,
+    NotificationsProvider
   ]
 })
 
