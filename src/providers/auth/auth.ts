@@ -20,29 +20,57 @@ export class AuthProvider {
   // 
   login(data): Observable<any> {
     let apiURL = this.remoteUrl + '_session';
-    return this.http.post(apiURL,{
-      'name' :data.email,
-      'password' : data.password
+    return this.http.post(apiURL, {
+      'name': data.email,
+      'password': data.password
     })
-    .map((res:any) => {
-      let toReturn:any =  res._body;
-      return toReturn; 
-    })
-    .catch((e:any) => { 
-      return Observable.of(e._body); 
-    })
+      .map((res: any) => {
+        let toReturn: any = res._body;
+        return toReturn;
+      })
+      .catch((e: any) => {
+        return Observable.of(e._body);
+      })
   }
   //
   logout(): Observable<any> {
     let apiURL = this.remoteUrl + '_session';
-    return this.http.delete(apiURL,{
+    return this.http.delete(apiURL, {
     })
-    .map((res:any) => {
-      return res; 
-    })
-    .catch((e:any) => { 
-      return Observable.of(e); 
-    })
+      .map((res: any) => {
+        return res;
+      })
+      .catch((e: any) => {
+        return Observable.of(e);
+      })
   }
-  
+  //
+  register(form): Observable<any> {
+    let apiUrl = this.remoteUrl + '_users/org.couchdb.user:' + form.username;
+    let formData = new FormData();
+    formData.append('name', form.userName);
+    formData.append('email', form.email);
+    formData.append('password', form.password);
+    formData.append('grade', form.grade);
+    formData.append('retired_check', form.retiredCheck);
+    formData.append('ex_person_check', form.exPersonCheck);
+    formData.append('place_of_work', form.placeOfWork);
+    formData.append('client_address', form.clientAddress);
+    formData.append('date', form.date);
+    formData.append('contact_no', form.contactNo);
+    formData.append('roles', 'user');
+    let apiURL = this.remoteUrl + '_session';
+    console.log('apiurl', apiUrl);
+    return this.http.put(apiURL, {
+    })
+      .map((res: any) => {
+        console.log('sss', res);
+        return res;
+      })
+      .catch((e: any) => {
+        console.log('rrrr', e);
+        return Observable.of(e);
+      })
+  }
+
 }

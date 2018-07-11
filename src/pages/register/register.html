@@ -11,13 +11,13 @@
     </div>
 
     <!-- Login form -->
-    <form class="list-form" [formGroup] = "registerForm"  (ngSubmit) = "register()">
+    <form class="list-form" [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
       <ion-item>
         <ion-label floating>
           <ion-icon name="person" item-start class="text-primary"></ion-icon>
           Full Name
         </ion-label>
-        <ion-input type="text" formControlName="fullName"></ion-input>
+        <ion-input type="text" formControlName="userName"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -25,7 +25,7 @@
           <ion-icon name="mail" item-start class="text-primary"></ion-icon>
           Email
         </ion-label>
-        <ion-input type="email" formControlName = "email"></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -33,13 +33,99 @@
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Password
         </ion-label>
-        <ion-input type="password" formControlName = "password"></ion-input>
+        <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-   
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Confirm Password
+        </ion-label>
+        <ion-input type="password" formControlName="confirm_password"></ion-input>
+      </ion-item>
+      <!--  -->
+      <br>
+      <ion-list>
+        <ion-item>
+          <ion-label>Grade</ion-label>
+          <ion-select [(ngModel)]="gaming" formControlName="grade">
+            <ion-option value="consultants">Consultants</ion-option>
+            <ion-option value="professor">Professor</ion-option>
+            <ion-option value="associate">associate</ion-option>
+            <ion-option value="assistant">assistant</ion-option>
+            <ion-option value="sr_registrar">SR Registrar</ion-option>
+            <ion-option value="house_officier">House Officier</ion-option>
+            <ion-option value="reception">Reception</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label>Retired</ion-label>
+        <ion-checkbox color="dark" checked="false" formControlName = "retiredCheck"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ex - Persons</ion-label>
+        <ion-checkbox color="dark" checked="false" formControlName= "exPersonCheck"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Qualification
+        </ion-label>
+        <ion-input type="text" formControlName = "exPersonCheck"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Degree
+        </ion-label>
+        <ion-input type="text" formControlName="exPersonCheck"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Place Of Work
+        </ion-label>
+        <ion-input type="text" formControlName="placeOfWork"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >
+          <ion-icon item-start class="text-primary"></ion-icon>
+          Company Logo
+        </ion-label>
+        <ion-input type="file" accept="image/*" (change)="changeListener($event)"  formControlName="companyLogo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Client Address
+        </ion-label>
+        <ion-input type="password" formControlName="clientAddress"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
+        <ion-datetime class="no-pl" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Contact No
+        </ion-label>
+        <ion-input type="number" formControlName="contactNo"></ion-input>
+      </ion-item>
+      <!--  -->
 
       <div margin-top>
-        <button ion-button block color="dark" tappable [disabled] = "!registerForm.valid">
-          SIGN UP
+        <button ion-button block color="dark" tappable>
+          Register
         </button>
 
         <!-- <p text-center ion-text color="secondary">Or Sign Up with:</p>
@@ -70,6 +156,8 @@
     <div text-center margin-top>
       <span ion-text color="primary" tappable (click)="login()">I have an account</span>
     </div>
+    <br>
+    <br>
 
   </div>
 </ion-content>
