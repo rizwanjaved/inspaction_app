@@ -21,7 +21,6 @@ export class NotificationsProvider {
     // console.log('Hello NotificationsProvider Provider');
   }
   simpleTimeToast(msg) {
-    console.log('notifications', msg);
     let toast = this.toastCtrl.create({
       showCloseButton: true,
       // cssClass: 'profile-bg',

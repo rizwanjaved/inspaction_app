@@ -46,31 +46,31 @@ export class AuthProvider {
   }
   //
   register(form): Observable<any> {
-    let apiUrl = this.remoteUrl + '_users/org.couchdb.user:' + form.username;
-    let formData = new FormData();
-    formData.append('name', form.userName);
-    formData.append('email', form.email);
-    formData.append('password', form.password);
-    formData.append('grade', form.grade);
-    formData.append('retired_check', form.retiredCheck);
-    formData.append('ex_person_check', form.exPersonCheck);
-    formData.append('place_of_work', form.placeOfWork);
-    formData.append('client_address', form.clientAddress);
-    formData.append('date', form.date);
-    formData.append('contact_no', form.contactNo);
-    formData.append('roles', 'user');
-    let apiURL = this.remoteUrl + '_session';
-    console.log('apiurl', apiUrl);
-    return this.http.put(apiURL, {
+    let apiUrl = this.remoteUrl + '_users/org.couchdb.user:' + form.userName;
+    let data:any = {
+      "name": form.userName,
+      'email': form.email,
+      'password': form.password,
+      "roles": [],
+      "type": "user",
+      'grade': form.grade,
+      'retired_check': form.retiredCheck,
+      'ex_person_check': form.exPersonCheck,
+      'place_of_work': form.placeOfWork,
+      'client_address': form.clientAddress,
+      'date': form.date,
+      'contact_no': form.contactNo
+    }
+    let heads:any = new Headers();
+    heads.append('Content-Type', 'application/json');  
+    return this.http.put(apiUrl,data,{headers: heads})
+    .map((res: any) => {
+      let toReturn: any = res._body;
+      return toReturn;
     })
-      .map((res: any) => {
-        console.log('sss', res);
-        return res;
-      })
-      .catch((e: any) => {
-        console.log('rrrr', e);
-        return Observable.of(e);
-      })
+    .catch((e: any) => {
+      return Observable.of(e._body);
+    })
   }
 
 }

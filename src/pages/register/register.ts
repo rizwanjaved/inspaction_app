@@ -53,9 +53,9 @@ export class RegisterPage {
 
 
   // register and go to home page
-  register() {
-    console.log('zzz', this.registerForm.value);
-    // this.nav.setRootHomePage);
+  register(res) {
+    console.log('zzz', res);
+    this.nav.setRoot(LoginPage);
   }
   registerSubmit() {
     let form = this.registerForm.value;
@@ -64,13 +64,27 @@ export class RegisterPage {
     } else {
       this.auth.register(this.registerForm.value)
       .subscribe(res=>{
+        this.validateRegister(JSON.parse(res));
         console.log('sub data', res);
       },
       err => {
-        console.log('error data', err);
+        this.validateRegister(err);
       }
       );
     }
+  }
+  validateRegister(response) {
+    let msg = "Oops! Unable to register user";
+    console.log('res', response);
+    if(!response || (response && response.error)){
+      this.notify.simpleTimeToast(msg);
+    } else {
+      if(response.id !== undefined && response.id !== null) {
+        this.register(response);
+      } else {
+        this.notify.simpleTimeToast(msg);
+      }
+    } 
   }
 
   // go to login page

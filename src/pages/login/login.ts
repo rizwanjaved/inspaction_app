@@ -52,7 +52,7 @@ export class LoginPage {
   // login and go to home page
   Validate(response) {
     let msg = "Name or password is incorrect";
-    console.log('res', response);
+    console.log('res', response.error);
     if(!response || (response && response.error)){
       this.notify.simpleTimeToast(msg);
     } else {
