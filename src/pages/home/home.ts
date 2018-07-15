@@ -6,6 +6,8 @@ import {NotificationsPage} from "../notifications/notifications";
 import {SettingsPage} from "../settings/settings";
 import {TripsPage} from "../trips/trips";
 import {SearchLocationPage} from "../search-location/search-location";
+import { LoginPage } from "../login/login";
+
 
 
 
@@ -21,7 +23,12 @@ export class HomePage {
     date: new Date().toISOString()
   }
 
-  constructor(private storage: Storage, public nav: NavController, public popoverCtrl: PopoverController) {
+  constructor(
+    private storage: Storage, 
+    public nav: NavController, 
+    public popoverCtrl: PopoverController
+  ) {
+    this.redirect();
   }
 
   ionViewWillEnter() {
@@ -58,6 +65,14 @@ export class HomePage {
     let popover = this.popoverCtrl.create(NotificationsPage);
     popover.present({
       ev: myEvent
+    });
+  }
+
+  redirect() {
+    this.storage.get('user').then(data => {
+      if(!data || data.name == null) {
+        this.nav.setRoot(LoginPage);
+      }
     });
   }
 

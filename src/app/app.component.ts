@@ -7,6 +7,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
+import { LandingPage } from "../pages/landing/landing";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from '../providers/auth/auth';
@@ -26,7 +27,7 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any;
+  rootPage: any =  LandingPage;
   user :any;
 
   appMenuItems: Array<MenuItem>;
@@ -45,7 +46,7 @@ export class MyApp {
       {title: 'Home', component: HomePage, icon: 'home'},
       {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
-    this.redirect();
+    // this.redirect();
   }
 
   initializeApp() {
@@ -66,17 +67,17 @@ export class MyApp {
     });
   }
 
-  redirect() {
-    this.storage.get('user').then(data => {
-      console.log('user-data', data);
-      if(data && data.name !== null) {
-        this.rootPage = HomePage;
-        this.user = data;
-      } else {
-        this.rootPage = LoginPage;
-      }
-    });
-  }
+  // redirect() {
+  //   this.storage.get('user').then(data => {
+  //     console.log('user-data', data);
+  //     if(data && data.name !== null) {
+  //       this.rootPage = HomePage;
+  //       this.user = data;
+  //     } else {
+  //       this.rootPage = LoginPage;
+  //     }
+  //   });
+  // }
 
   openPage(page) {
     // Reset the content nav to have just this page

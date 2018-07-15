@@ -20,13 +20,18 @@ import {HomePage} from "../pages/home/home";
 import {LoginPage} from "../pages/login/login";
 import {NotificationsPage} from "../pages/notifications/notifications";
 import {RegisterPage} from "../pages/register/register";
+import {LandingPage} from "../pages/landing/landing";
+import {PatientsPage} from "../pages/patients/patients";
 import {SearchLocationPage} from "../pages/search-location/search-location";
 import {TripDetailPage} from "../pages/trip-detail/trip-detail";
 import {TripsPage} from "../pages/trips/trips";
 import {LocalWeatherPage} from "../pages/local-weather/local-weather";
+
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
 import { NotificationsProvider } from '../providers/notifications/notifications';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 
 // import services
@@ -46,6 +51,8 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
     LocalWeatherPage,
     NotificationsPage,
     RegisterPage,
+    LandingPage,
+    PatientsPage,
     SearchLocationPage,
     TripDetailPage,
     TripsPage
@@ -74,6 +81,8 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
     LocalWeatherPage,
     NotificationsPage,
     RegisterPage,
+    LandingPage,
+    PatientsPage,
     SearchLocationPage,
     TripDetailPage,
     TripsPage
@@ -86,7 +95,11 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
     TripService,
     WeatherProvider,
     AuthProvider,
-    NotificationsProvider
+    NotificationsProvider,
+    FileTransfer,
+    FileTransferObject,
+    File
+    // FileUploadOptions,
   ]
 })
 
