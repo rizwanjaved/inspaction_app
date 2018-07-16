@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>All Registered Patients</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="dark">
+      <button ion-button icon-only color="dark" (click) = "openPage('AddPatinetPage')">
         <ion-icon name="plus"></ion-icon>
         Add New Patient
       </button>
@@ -21,13 +21,16 @@
 
 <ion-content padding>
 
-    <ion-list no-lines>
+    <ion-list no-lines *ngIf ="patients">
 
-        <ion-item-sliding *ngFor="let todo of todos">
+        <ion-item-sliding *ngFor="let p of patients">
           <ion-item>
-    
-            {{todo.title}}
-    
+            <ion-thumbnail item-start>
+              <img src="img/thumbnail-totoro.png">
+            </ion-thumbnail>
+            <h2>{{p.firstName}} {{p.secondName}}</h2>
+            <p>Hayao Miyazaki • 1988</p>
+            <button ion-button clear item-end>View</button>
           </ion-item>
     
           <ion-item-options>
@@ -39,9 +42,8 @@
             </button>
           </ion-item-options>
         </ion-item-sliding>
-    
       </ion-list>
-      <ion-list>
+      <!-- <ion-list>
           <ion-item>
             <ion-thumbnail item-start>
               <img src="img/thumbnail-totoro.png">
@@ -50,6 +52,6 @@
             <p>Hayao Miyazaki • 1988</p>
             <button ion-button clear item-end>View</button>
           </ion-item>
-        </ion-list>
+        </ion-list> -->
 
 </ion-content>

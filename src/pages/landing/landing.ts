@@ -21,7 +21,6 @@ export class LandingPage {
   }
 
   openPage(page) {
-    console.log('fasf', page);
     switch(page) {
       case 'home':
         this.navCtrl.setRoot(HomePage);

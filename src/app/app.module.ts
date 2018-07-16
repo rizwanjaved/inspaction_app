@@ -22,6 +22,8 @@ import {NotificationsPage} from "../pages/notifications/notifications";
 import {RegisterPage} from "../pages/register/register";
 import {LandingPage} from "../pages/landing/landing";
 import {PatientsPage} from "../pages/patients/patients";
+import {AddPatientPage} from "../pages/add-patient/add-patient";
+
 import {SearchLocationPage} from "../pages/search-location/search-location";
 import {TripDetailPage} from "../pages/trip-detail/trip-detail";
 import {TripsPage} from "../pages/trips/trips";
@@ -32,6 +34,7 @@ import { HttpModule } from '@angular/http';
 import { NotificationsProvider } from '../providers/notifications/notifications';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { PerformaProvider } from '../providers/performa/performa';
 
 
 // import services
@@ -53,6 +56,7 @@ import { File } from '@ionic-native/file';
     RegisterPage,
     LandingPage,
     PatientsPage,
+    AddPatientPage,
     SearchLocationPage,
     TripDetailPage,
     TripsPage
@@ -83,6 +87,7 @@ import { File } from '@ionic-native/file';
     RegisterPage,
     LandingPage,
     PatientsPage,
+    AddPatientPage,
     SearchLocationPage,
     TripDetailPage,
     TripsPage
@@ -98,7 +103,8 @@ import { File } from '@ionic-native/file';
     NotificationsProvider,
     FileTransfer,
     FileTransferObject,
-    File
+    File,
+    PerformaProvider
     // FileUploadOptions,
   ]
 })

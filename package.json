@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "4.4.4",
     "@ionic-native/core": "3.12.1",
     "@ionic-native/device": "^4.2.1",
+    "@ionic-native/file": "^4.9.2",
+    "@ionic-native/file-transfer": "^4.9.2",
     "@ionic-native/keyboard": "^4.1.0",
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
@@ -38,6 +40,7 @@
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "pouchdb": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18"
@@ -58,7 +61,9 @@
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android",

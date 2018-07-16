@@ -8,6 +8,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { LandingPage } from "../pages/landing/landing";
+import { AddPatientPage } from "../pages/add-patient/add-patient";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from '../providers/auth/auth';
@@ -27,7 +28,7 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  LandingPage;
+  rootPage: any = LandingPage;//AddPatientPage;
   user :any;
 
   appMenuItems: Array<MenuItem>;
