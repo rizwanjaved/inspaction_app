@@ -26,19 +26,19 @@
         <ion-item-sliding *ngFor="let p of patients">
           <ion-item>
             <ion-thumbnail item-start>
-              <img src="img/thumbnail-totoro.png">
+              <img src="assets/img/user_default.png">
             </ion-thumbnail>
             <h2>{{p.firstName}} {{p.secondName}}</h2>
-            <p>Hayao Miyazaki • 1988</p>
+            <p>{{p._id}}</p>
             <button ion-button clear item-end>View</button>
           </ion-item>
     
           <ion-item-options>
-            <button ion-button icon-only color="light" (click)="updateTodo(todo)">
-              <ion-icon name="create"></ion-icon>
+            <button ion-button icon-only color="dark" (click)="updateTodo(p)">
+              <ion-icon name="undo"></ion-icon>
             </button>
-            <button ion-button icon-only color="primary" (click)="deleteTodo(todo)">
-              <ion-icon name="checkmark"></ion-icon>
+            <button ion-button icon-only color="danger" (click)="deleteTodo(p)">
+              <ion-icon name="trash"></ion-icon>
             </button>
           </ion-item-options>
         </ion-item-sliding>

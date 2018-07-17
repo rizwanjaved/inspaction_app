@@ -12,6 +12,7 @@ import { AddPatientPage } from "../pages/add-patient/add-patient";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from '../providers/auth/auth';
+import { PatientsPage } from "../pages/patients/patients";
 
 
 
@@ -19,6 +20,7 @@ export interface MenuItem {
     title: string;
     component: any;
     icon: string;
+    root: boolean;
 }
 
 @Component({
@@ -44,8 +46,9 @@ export class MyApp {
     this.initializeApp();
 
     this.appMenuItems = [
-      {title: 'Home', component: HomePage, icon: 'home'},
-      {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
+      {title: 'Home', component: HomePage, icon: 'home', root:true},
+      {title: 'Patients Page', component: PatientsPage  , icon: 'contact', root:false}
+      // {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
     // this.redirect();
   }
@@ -83,7 +86,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if(page.root) {
+      this.nav.setRoot(page.component);
+    } else {
+      this.nav.push(page.component);
+    }
   }
 
   logout() {

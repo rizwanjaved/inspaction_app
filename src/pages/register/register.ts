@@ -99,7 +99,6 @@ export class RegisterPage {
 
   // register and go to home page
   register(res) {
-    console.log('zzz', res);
     this.nav.setRoot(LoginPage);
   }
   registerSubmit() {

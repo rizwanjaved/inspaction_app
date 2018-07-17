@@ -27,6 +27,7 @@ export class PerformaProvider {
   auth_db :any;
   user_status :any;
   session :any;
+  selectedPatient :any;
   constructor(public http: Http) {
     this.db = new PouchDB('performa');
     PouchDB.plugin(PouchDBfind);

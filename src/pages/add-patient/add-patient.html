@@ -109,7 +109,7 @@
     <!--  -->
 
     <div margin-top>
-      <button ion-button block color="dark" tappable>
+      <button ion-button block color="dark" tappable [disabled] = "!addPtientForm.valid">
         Add Patient
       </button>
 

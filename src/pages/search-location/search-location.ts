@@ -56,7 +56,6 @@ export class SearchLocationPage {
     if (this.fromto === 'from') {
       this.storage.set('pickup', item.name);
     }
-
     if (this.fromto === 'to') {
       this.storage.set('dropOff', item.name);
     }
