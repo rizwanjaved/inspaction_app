@@ -33,10 +33,10 @@ export class HomePage {
     public popoverCtrl: PopoverController,
     public performa: PerformaProvider
   ) {
-    this.redirect();
   }
 
   ionViewWillEnter() {
+    this.redirect();
     // this.search.pickup = "Rio de Janeiro, Brazil";
     // this.search.dropOff = "Same as pickup";
     this.storage.get('pickup').then((val) => {

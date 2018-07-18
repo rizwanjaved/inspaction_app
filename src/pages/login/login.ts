@@ -36,7 +36,12 @@ export class LoginPage {
   submitLogin() {
     this.auth.login(this.loginForm.value)
       .subscribe(res =>{
-       this.Validate(JSON.parse(res));
+        if(res.type && res.type== 'error') {
+          this.Validate('error');
+        } else {
+          let response:any = res ? JSON.parse(res) : 'error';
+          this.Validate(response);
+        }
       },
       err =>{
        this.Validate(false);
@@ -51,8 +56,12 @@ export class LoginPage {
 
   // login and go to home page
   Validate(response) {
-    let msg = "Name or password is incorrect";
-    console.log('res', response.error);
+    let msg;
+    msg = "Name or password is incorrect";
+    if(response == 'error') 
+    {
+      msg = this.auth.connectionErrorMessage;
+    }
     if(!response || (response && response.error)){
       this.notify.simpleTimeToast(msg);
     } else {

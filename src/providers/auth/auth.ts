@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
 */
 @Injectable()
 export class AuthProvider {
-  public remoteUrl = 'http://192.168.99.6:5985/'
+  public remoteUrl = 'http://192.168.99.6:5985/';
+  public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   constructor(public http: Http) {
     console.log('Hello AuthProvider Provider');
   }
@@ -25,10 +26,12 @@ export class AuthProvider {
       'password': data.password
     })
       .map((res: any) => {
+        console.log('provider login res', res);
         let toReturn: any = res._body;
         return toReturn;
       })
       .catch((e: any) => {
+        console.log('provider login e', e);
         return Observable.of(e._body);
       })
   }

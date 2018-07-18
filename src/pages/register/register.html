@@ -66,7 +66,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Ex - Persons</ion-label>
-        <ion-checkbox color="dark" [checked]="false" formControlName="exPersonCheck"></ion-checkbox>
+        <ion-checkbox color="dark" formControlName="exPersonCheck"></ion-checkbox>
       </ion-item>
 
       <ion-item>
@@ -74,7 +74,7 @@
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Qualification
         </ion-label>
-        <ion-input type="text" formControlName="exPersonCheck"></ion-input>
+        <ion-input type="text" formControlName="qualification"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -82,7 +82,7 @@
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Degree
         </ion-label>
-        <ion-input type="text" formControlName="exPersonCheck"></ion-input>
+        <ion-input type="text" formControlName="degree"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -112,7 +112,7 @@
       <ion-item>
         <ion-label floating>
           <ion-icon name="md-calendar" item-start class="text-primary"></ion-icon>
-          Client Address
+          Date
         </ion-label>
         <ion-datetime class="no-pl" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
       </ion-item>
