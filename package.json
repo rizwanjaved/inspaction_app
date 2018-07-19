@@ -27,7 +27,7 @@
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "^2.0.1",
-    "cordova-android": "6.3.0",
+    "cordova-android": "6.4.0",
     "cordova-ios": "^4.4.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^1.1.7",
@@ -43,7 +43,9 @@
     "pouchdb-find": "^7.0.0",
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "cordova-plugin-file-transfer": "~1.7.1",
+    "cordova-plugin-file": "~6.0.1"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.1",
@@ -66,9 +68,9 @@
       "cordova-plugin-file": {}
     },
     "platforms": [
-      "android",
       "ios",
-      "windows"
+      "windows",
+      "android"
     ]
   },
   "config": {

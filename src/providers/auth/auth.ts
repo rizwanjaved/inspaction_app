@@ -68,10 +68,12 @@ export class AuthProvider {
     heads.append('Content-Type', 'application/json');  
     return this.http.put(apiUrl,data,{headers: heads})
     .map((res: any) => {
+      console.log('register map ', res);
       let toReturn: any = res._body;
       return toReturn;
     })
     .catch((e: any) => {
+      console.log('register error ', e);
       return Observable.of(e._body);
     })
   }

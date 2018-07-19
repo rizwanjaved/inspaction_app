@@ -74,7 +74,7 @@ import { PerformaProvider } from '../providers/performa/performa';
     }),
     IonicStorageModule.forRoot({
       name: 'performa',
-        driverOrder: ['indexeddb', 'sqlite', 'websql']
+        driverOrder: ['sqlite', 'websql', 'indexeddb']
     })
   ],
   bootstrap: [IonicApp],
