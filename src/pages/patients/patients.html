@@ -30,14 +30,14 @@
             </ion-thumbnail>
             <h2>{{p.firstName}} {{p.secondName}}</h2>
             <p>{{p._id}}</p>
-            <button ion-button clear item-end>View</button>
+            <button ion-button clear item-end (click) ="viewPatient(p)">View</button>
           </ion-item>
     
           <ion-item-options>
             <button ion-button icon-only color="dark" (click)="updateTodo(p)">
               <ion-icon name="undo"></ion-icon>
             </button>
-            <button ion-button icon-only color="danger" (click)="deleteTodo(p)">
+            <button ion-button icon-only color="danger" (click)="removePatient(p)">
               <ion-icon name="trash"></ion-icon>
             </button>
           </ion-item-options>

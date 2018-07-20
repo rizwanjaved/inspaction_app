@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
 
 
 /*
@@ -15,7 +16,8 @@ import { Observable } from 'rxjs';
 export class AuthProvider {
   public remoteUrl = 'http://192.168.99.6:5985/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
-  constructor(public http: Http) {
+  public authStatus; 
+  constructor(public http: Http,  private storage: Storage) {
     console.log('Hello AuthProvider Provider');
   }
   // 
@@ -76,6 +78,17 @@ export class AuthProvider {
       console.log('register error ', e);
       return Observable.of(e._body);
     })
+  }
+  checkAuth() {
+    this.storage.get('user').then(data => {
+      if (data || data.name !== null) {
+        this.authStatus  = true;
+        return true;
+      } else {
+        this.authStatus  = false;
+        return false;
+      }
+    });
   }
 
 }

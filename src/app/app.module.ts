@@ -22,8 +22,10 @@ import {NotificationsPage} from "../pages/notifications/notifications";
 import {RegisterPage} from "../pages/register/register";
 import {LandingPage} from "../pages/landing/landing";
 import {PatientsPage} from "../pages/patients/patients";
+import {ViewPatientPage} from "../pages/view-patient/view-patient";
 import {AddPatientPage} from "../pages/add-patient/add-patient";
 import {CommonSearchPage} from "../pages/common-search/common-search";
+
 
 import {SearchLocationPage} from "../pages/search-location/search-location";
 import {TripDetailPage} from "../pages/trip-detail/trip-detail";
@@ -58,6 +60,7 @@ import { PerformaProvider } from '../providers/performa/performa';
     LandingPage,
     PatientsPage,
     AddPatientPage,
+    ViewPatientPage,
     CommonSearchPage,
     SearchLocationPage,
     TripDetailPage,
@@ -90,6 +93,7 @@ import { PerformaProvider } from '../providers/performa/performa';
     LandingPage,
     PatientsPage,
     AddPatientPage,
+    ViewPatientPage,
     CommonSearchPage,
     SearchLocationPage,
     TripDetailPage,

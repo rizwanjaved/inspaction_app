@@ -67,6 +67,21 @@ export class PerformaProvider {
         })
     });
   }
+  removePatients(p) {
+    // console.log('removing ', p);
+    let _db = this.db;
+    return new Promise(resolve => {
+      _db.get(p._id).then(function (pd) {
+        resolve (_db.remove(pd));
+      }).catch(err =>{
+        resolve (err);
+      })
+    });
+  }
+  /******* end patients section *******/
+
+  
+
 
 
 }

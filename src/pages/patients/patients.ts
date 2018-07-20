@@ -1,8 +1,9 @@
 import {Component} from "@angular/core";
-import {NavController, LoadingController, ToastController, Platform} from "ionic-angular";
+import {NavController, LoadingController, ToastController, Platform, ModalController, MenuController} from "ionic-angular";
 import {LoginPage} from "../login/login";
 import {HomePage} from "../home/home";
 import {AddPatientPage} from "../add-patient/add-patient";
+import {ViewPatientPage} from "../view-patient/view-patient";
 import {AuthProvider} from '../../providers/auth/auth';
 import {NotificationsProvider} from '../../providers/notifications/notifications';
 import {PerformaProvider} from '../../providers/performa/performa';
@@ -37,16 +38,38 @@ export class PatientsPage {
     public toastCtrl: ToastController,
     private transfer: FileTransfer,
     public filez: File,
-    public platform:Platform
+    public platform:Platform,
+    public modalCtrl: ModalController,
+    public menu: MenuController
   ) {
   }
 
   openPage(page) {
     this.nav.push(AddPatientPage);
   }
-  
+
+  viewPatient(p) {
+    const modal = this.modalCtrl.create(ViewPatientPage,{patientDetails: p});
+    modal.present();
+  }
+
+  removePatient(p) {
+    this.performa.removePatients(p).then((data:any) => {
+     if(data.error && data.reason == "deleted") {
+       this.notify.simpleTimeToast('Error Deleting Records')
+     } else {
+      this.notify.simpleTimeToast('Patient deleted') ;
+      this.ionViewDidEnter();    
+     }
+    });
+    // console.log('removing', p);
+  }
+
+  // life  cycle hooks 
   ionViewWillLoad() {
-    this.performa.getAllPatients().then((data:any)=>{
+  }
+  ionViewDidEnter() {
+    this.performa.getAllPatients().then((data:any)=> {
       if(data && data.docs) {
         this.patients  = data.docs;
       } else { 
@@ -56,8 +79,11 @@ export class PatientsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PatientsPage');
-   
+    // console.log('ionViewDidLoad PatientsPage');
+    if(this.auth.checkAuth) {
+      this.menu.swipeEnable(true);
+    } else {
+      this.menu.swipeEnable(false);
+    }
   }
-
 }

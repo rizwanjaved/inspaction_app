@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {PatientsPage} from "../patients/patients";
 
@@ -17,7 +17,8 @@ import {PatientsPage} from "../patients/patients";
 })
 export class LandingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+    this.menu.swipeEnable(false);
   }
 
   openPage(page) {

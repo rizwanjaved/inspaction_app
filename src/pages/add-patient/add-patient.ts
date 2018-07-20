@@ -76,7 +76,7 @@ export class AddPatientPage {
     reader.onload = (e: any) => {
         const bstr = e.target.result;
         console.log('reader ', e);
-      };
+    };
       
       // console.log('file isss ', );
     // loader.present();
