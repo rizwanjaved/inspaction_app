@@ -36,7 +36,6 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    this.redirect();
     // this.search.pickup = "Rio de Janeiro, Brazil";
     // this.search.dropOff = "Same as pickup";
     this.storage.get('pickup').then((val) => {
@@ -50,6 +49,10 @@ export class HomePage {
     });
     // this.performa.selectedPatient = null;
     this.selectedPatient = "";
+  }
+  ionViewCanEnter() {
+    this.redirect();
+    return true;
   }
   ionViewDidEnter() {
     this.loadPatients();

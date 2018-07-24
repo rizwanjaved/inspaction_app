@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Patient Details Page 
+      Patient Details Page
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -13,14 +13,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="!EditView">
   <span text-center>
     <ion-thumbnail item-start>
       <ion-img width="80" height="80" src="assets/img/user_default.png"></ion-img>
     </ion-thumbnail>
   </span>
   <ion-list *ngIf="patient">
-    <ion-item >
+    <ion-item>
       <h2>Full Name : {{patient.firstName}} {{patient.secondName}}</h2>
     </ion-item>
     <ion-item>
@@ -51,4 +51,12 @@
   <ion-item *ngIf="!patient">
     No Patient Information
   </ion-item>
+</ion-content>
+
+<ion-content padding *ngIf="EditView">
+    <span text-center>
+        <ion-thumbnail item-start>
+          <ion-img width="80" height="80" src="assets/img/user_default.png"></ion-img>
+        </ion-thumbnail>
+      </span>
 </ion-content>

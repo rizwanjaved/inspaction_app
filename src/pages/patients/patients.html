@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>All Registered Patients</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="dark" (click) = "openPage('AddPatinetPage')">
+      <button ion-button icon-only color="dark" (click)="openPage('AddPatinetPage')">
         <ion-icon name="plus"></ion-icon>
         Add New Patient
       </button>
@@ -20,30 +20,32 @@
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="reloadPatient($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list no-lines *ngIf="patients">
 
-    <ion-list no-lines *ngIf ="patients">
+    <ion-item-sliding *ngFor="let p of patients">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/user_default.png">
+        </ion-thumbnail>
+        <h2>{{p.firstName}} {{p.secondName}}</h2>
+        <p>{{p._id}}</p>
+        <button ion-button clear item-end (click)="viewPatient(p)">View</button>
+      </ion-item>
 
-        <ion-item-sliding *ngFor="let p of patients">
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="assets/img/user_default.png">
-            </ion-thumbnail>
-            <h2>{{p.firstName}} {{p.secondName}}</h2>
-            <p>{{p._id}}</p>
-            <button ion-button clear item-end (click) ="viewPatient(p)">View</button>
-          </ion-item>
-    
-          <ion-item-options>
-            <button ion-button icon-only color="dark" (click)="updateTodo(p)">
-              <ion-icon name="undo"></ion-icon>
-            </button>
-            <button ion-button icon-only color="danger" (click)="removePatient(p)">
-              <ion-icon name="trash"></ion-icon>
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
-      <!-- <ion-list>
+      <ion-item-options>
+        <button ion-button icon-only color="dark" (click)="editPatient(p)">
+          <ion-icon name="undo"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="removePatient(p)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <!-- <ion-list>
           <ion-item>
             <ion-thumbnail item-start>
               <img src="img/thumbnail-totoro.png">

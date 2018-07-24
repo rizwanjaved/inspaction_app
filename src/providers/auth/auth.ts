@@ -14,9 +14,12 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class AuthProvider {
-  public remoteUrl = 'http://192.168.99.6:5985/';
+  public remoteUrl = 'http://25d4e1ce.ngrok.io/';
+  // public remoteUrl = 'http://192.168.99.6:5985/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   public authStatus; 
+  public authIssue;
+  public authData;
   constructor(public http: Http,  private storage: Storage) {
     console.log('Hello AuthProvider Provider');
   }
@@ -29,10 +32,12 @@ export class AuthProvider {
     })
       .map((res: any) => {
         console.log('provider login res', res);
+        this.authData = JSON.stringify(res);
         let toReturn: any = res._body;
         return toReturn;
       })
       .catch((e: any) => {
+        this.authIssue = JSON.stringify(e);
         console.log('provider login e', e);
         return Observable.of(e._body);
       })

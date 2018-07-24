@@ -14,12 +14,18 @@ import { NavController, NavParams, ViewController} from 'ionic-angular';
 })
 export class ViewPatientPage {
   patient:any;
+  EditView:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,  public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
     this.patient=this.navParams.get('patientDetails');
-    console.log('ionViewDidLoad ViewPatientPage', this.patient);
+    this.EditView = this.navParams.get('canEdit');
+    console.log('zzz', this.EditView);
+    // console.log('ionViewDidLoad ViewPatientPage', this.patient);
+  }
+  ionViewWillEnter() {
+    
   }
   dismiss() {
     this.viewCtrl.dismiss();
