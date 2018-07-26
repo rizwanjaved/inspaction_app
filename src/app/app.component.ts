@@ -30,7 +30,7 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;//LandingPage;//AddPatientPage;
+  rootPage: any = PatientsPage;//HomePage;//LandingPage;//AddPatientPage;
   user :any;
 
   appMenuItems: Array<MenuItem>;

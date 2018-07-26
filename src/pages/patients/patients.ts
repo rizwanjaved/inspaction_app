@@ -12,6 +12,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 // import {NavController, LoadingController, ToastController, Platform} from "ionic-angular/umd";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import {DomSanitizer} from "@angular/platform-browser";
+
 
 
 /**
@@ -40,7 +42,8 @@ export class PatientsPage {
     public filez: File,
     public platform: Platform,
     public modalCtrl: ModalController,
-    public menu: MenuController
+    public menu: MenuController,
+    public sanitizer:DomSanitizer
   ) {
   }
 
@@ -87,11 +90,22 @@ export class PatientsPage {
 loadPatients() {
   this.performa.getAllPatients().then((data: any) => {
     if (data && data.docs) {
-      this.patients = data.docs;
+      this.patients = data.docs.map(x => {
+        if(x.user_image) {
+           this.performa.getAttachment(x._id, 'image_1').then((url:any) => {
+             x.image_url = url.toString();//this.sanitizer.bypassSecurityTrustStyle(url);
+           })
+        } else {
+          x.image_url = 'assets/img/user_default.png';
+        }
+        console.log('ddddd',x);
+        return x;
+      });
     } else {
       this.patients = null;
     }
   });
+  // console.log('patients',  this.patients);
 }
 
 ionViewDidLoad() {

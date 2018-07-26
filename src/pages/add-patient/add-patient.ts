@@ -37,7 +37,7 @@ export class AddPatientPage {
   changeListener($event) : void {
     this.file = $event.target.files[0];
     // console.log('file is ', this.file);
-    this.uploadFile(this.file)
+    // this.performa.savePatientAttachments(this.file);
   }
   constructor(
     public nav: NavController,
@@ -53,19 +53,21 @@ export class AddPatientPage {
     public platform:Platform
   ) {
     this.addPtientForm = this.fb.group({
-      firstName :  ['', Validators.required],
-      secondName :  ['', Validators.required],
-      dateOfBirth :  ['', Validators.required],
-      age :  ['', Validators.required],
-      cnic :  ['', Validators.required],
-      contact :  ['', Validators.required],
-      email: ['', Validators.required],
-      whatsapp: ['', Validators.required],
-      clientAddress: ['', Validators.required],
-      recordNo: ['', Validators.required],
-      patientImage: ['']
+      firstName     :  ['', Validators.required],
+      secondName    :  ['', Validators.required],
+      dateOfBirth   :  [''],
+      age           :  [''],
+      cnic          :  [''],
+      contact       :  [''],
+      email         :  [''],
+      whatsapp      :  [''],
+      clientAddress :  [''],
+      recordNo      :  [''],
+      patientImage   : ['']
     });
     // console.log('all url', target);
+    this.performa.getImage();
+
   }
   uploadFile(file) {
     console.log('file is ', file);
@@ -114,7 +116,12 @@ export class AddPatientPage {
     let form = this.addPtientForm.value;
     form['user_type'] = "patient";
     form['record_type'] = "user";
-    this.performa.registerPatients(form)
+    if(this.file) {
+      form['user_image'] = true;
+    } else {
+      form['user_image'] = false;
+    }
+    this.performa.registerPatients(form, this.file)
     .then((res:any) => {
       this.validateRegister(res);
     });
