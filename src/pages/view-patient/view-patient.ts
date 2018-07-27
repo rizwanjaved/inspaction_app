@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController} from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+
 
 /**
  * Generated class for the ViewPatientPage page.

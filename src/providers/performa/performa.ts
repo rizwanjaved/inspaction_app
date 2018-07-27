@@ -50,7 +50,7 @@ export class PerformaProvider {
          var url = URL.createObjectURL(blob_buffer);
          var img = document.createElement('img');
          img.src = url;
-         console.log('imgggggggg', img);
+        //  console.log('imgggggggg', img);
          document.body.appendChild(img);
         }
       });
@@ -135,6 +135,30 @@ export class PerformaProvider {
     });
   }
   /******* end patients section *******/
+   /******* doctor section *******/
+   registerDoctors(form, file) {
+    let _db = this.db;
+    console.log('submitted form data', form);
+    return new Promise(resolve => {
+      this.db.post(form).then(function (res) {
+        console.log('after register', res);
+        if(file) {
+          console.log('after register file', file);
+          _db.putAttachment(res.id, 'image_1', res.rev, file, 'image/png', function(err, res) { 
+            if (err) { 
+               console.log(err); 
+            } else { 
+               console.log(res+"Attachment added successfully");
+            } 
+          });
+        }
+        resolve(res);
+      }).catch(function (err) {
+        resolve(err);
+      })
+    });
+  }
+  /******* end doctor section *******/
 
   
 

@@ -40,61 +40,30 @@ export class RegisterPage {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     private transfer: FileTransfer,
-    public filez: File,
+    public image: File,
     public platform: Platform
   ) {
     this.registerForm = this.fb.group({
       userName: ['', Validators.required],
-      email: ['', Validators.required],
       password: ['', Validators.required],
       confirm_password: ['', Validators.required],
-      grade: ['', Validators.required],
-      retiredCheck: [false, Validators.required],
-      exPersonCheck: [false, Validators.required],
-      placeOfWork: ['', Validators.required],
-      qualification: ['', Validators.required],
-      degree: ['', Validators.required],
+      email: [''],
+      grade: [''],
+      retiredCheck: [false],
+      exPersonCheck: [false],
+      placeOfWork: [''],
+      qualification: [''],
+      degree: [''],
       companyLogo: [''],
-      clientAddress: ['', Validators.required],
-      date: ['', Validators.required],
-      contactNo: ['', Validators.required],
+      clientAddress: [''],
+      date: [''],
+      contactNo: [''],
     });
     // console.log('all url', target);
   }
-  uploadFile(file) {
-    console.log('file is ', file)
-    let loader = this.loadingCtrl.create({
-      content: "Uploading..."
-    });
-    let reader: FileReader = new FileReader();
-    reader.onload = (e: any) => {
-      const bstr = e.target.result;
-      console.log('reader ', e);
-    };
-
-    // console.log('file isss ', );
-    // loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-    console.log('zzzz', fileTransfer);
-    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
-      .then((data) => {
-        console.log(data + " Uploaded Successfully");
-        this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-        loader.dismiss();
-        this.notify.simpleTimeToast("Image uploaded successfully");
-      }, (err) => {
-        console.log(err);
-        loader.dismiss();
-        this.notify.simpleTimeToast(err);
-      });
+  uploadFile($event) {
+    this.image = $event.target.value[0];
+    console.log('file is', this.image);
   }
 
 
@@ -108,8 +77,9 @@ export class RegisterPage {
     if (form.password !== form.confirm_password) {
       return false;
     } else {
-      this.auth.register(this.registerForm.value)
+      this.auth.register(this.registerForm.value, this.image)
         .subscribe(res => {
+          console.log('go nawaz', res);
           if (res.type && res.type == 'error') {
             this.validateRegister('error');
           } else {

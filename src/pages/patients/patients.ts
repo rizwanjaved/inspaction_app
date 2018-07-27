@@ -93,12 +93,12 @@ loadPatients() {
       this.patients = data.docs.map(x => {
         if(x.user_image) {
            this.performa.getAttachment(x._id, 'image_1').then((url:any) => {
-             x.image_url = url.toString();//this.sanitizer.bypassSecurityTrustStyle(url);
-           })
+             x.image_url = this.sanitizer.bypassSecurityTrustResourceUrl(url.toString());
+           });
         } else {
-          x.image_url = 'assets/img/user_default.png';
+          x.image_url = this.sanitizer.bypassSecurityTrustResourceUrl('assets/img/user_default.png');
         }
-        console.log('ddddd',x);
+        // console.log('ddddd',x);
         return x;
       });
     } else {

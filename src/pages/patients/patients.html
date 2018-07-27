@@ -28,9 +28,9 @@
     <ion-item-sliding *ngFor="let p of patients">
       <ion-item>
         <ion-thumbnail item-start>
-          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(p.image_url)">
+          <img [src]="p.image_url">
         </ion-thumbnail>
-        <h2>{{sanitizer.bypassSecurityTrustResourceUrl(p.image_url)}}</h2>
+        <!-- <h2>{{sanitizer.bypassSecurityTrustResourceUrl(p.image_url)}}</h2> -->
         <h2>{{p.firstName}} {{p.secondName}}</h2>
         <p>{{p._id}}</p>
         <button ion-button clear item-end (click)="viewPatient(p)">View</button>

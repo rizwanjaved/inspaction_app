@@ -111,6 +111,7 @@ export class HomePage {
       if (!data || data.name == null) {
         this.nav.setRoot(LoginPage);
       }
+      console.log('dataaaa', data);
     });
   }
 

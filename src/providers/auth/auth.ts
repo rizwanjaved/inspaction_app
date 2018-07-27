@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
+import { PerformaProvider } from '../performa/performa';
 
 
 /*
@@ -14,13 +15,13 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class AuthProvider {
-  public remoteUrl = 'http://25d4e1ce.ngrok.io/';
-  // public remoteUrl = 'http://192.168.99.6:5985/';
+  // public remoteUrl = 'http://25d4e1ce.ngrok.io/';
+  public remoteUrl = 'http://192.168.99.6:5985/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   public authStatus; 
   public authIssue;
   public authData;
-  constructor(public http: Http,  private storage: Storage) {
+  constructor(public http: Http,  private storage: Storage, public performa: PerformaProvider) {
     console.log('Hello AuthProvider Provider');
   }
   // 
@@ -55,7 +56,7 @@ export class AuthProvider {
       })
   }
   //
-  register(form): Observable<any> {
+  register(form, file) {
     let apiUrl = this.remoteUrl + '_users/org.couchdb.user:' + form.userName;
     let data:any = {
       "name": form.userName,
@@ -69,15 +70,22 @@ export class AuthProvider {
       'place_of_work': form.placeOfWork,
       'client_address': form.clientAddress,
       'date': form.date,
-      'contact_no': form.contactNo
+      'contact_no': form.contactNo,
+      'user_type': 'doctor'
     }
     let heads:any = new Headers();
     heads.append('Content-Type', 'application/json');  
     return this.http.put(apiUrl,data,{headers: heads})
     .map((res: any) => {
-      console.log('register map ', res);
-      let toReturn: any = res._body;
-      return toReturn;
+      let toReturn: any = JSON.parse(res._body);
+      if (toReturn.id !== undefined && toReturn.id !== null) {
+        this.performa.registerDoctors(data,file).then((doc)=>{
+          toReturn.attached_user = doc;
+          console.log('register map ', toReturn);
+          debugger;
+          // return toReturn;
+        });
+      }
     })
     .catch((e: any) => {
       console.log('register error ', e);

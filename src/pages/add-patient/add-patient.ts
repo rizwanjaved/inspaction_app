@@ -63,11 +63,9 @@ export class AddPatientPage {
       whatsapp      :  [''],
       clientAddress :  [''],
       recordNo      :  [''],
-      patientImage   : ['']
+      patientImage  :  ['']
     });
     // console.log('all url', target);
-    this.performa.getImage();
-
   }
   uploadFile(file) {
     console.log('file is ', file);
