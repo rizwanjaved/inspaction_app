@@ -10,6 +10,7 @@ import { CommonSearchPage } from "../common-search/common-search";
 import { LoginPage } from "../login/login";
 import { LevelsPage } from "../levels/levels";
 import { PerformaProvider } from '../../providers/performa/performa';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 
@@ -28,11 +29,13 @@ export class HomePage {
   }
   public patients;
   public selectedPatient;
+  n;
   constructor(
     private storage: Storage,
     public nav: NavController,
     public popoverCtrl: PopoverController,
-    public performa: PerformaProvider
+    public performa: PerformaProvider,
+    public auth:AuthProvider
   ) {
   }
 
@@ -57,6 +60,8 @@ export class HomePage {
   }
   ionViewDidEnter() {
     this.loadPatients();
+    this.n = this.auth.menuButton;
+    console.log('menu button is',this.n);
   }
   // ionViewDidLoad() {
   //   this.loadPatients();

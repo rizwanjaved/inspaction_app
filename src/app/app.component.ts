@@ -15,6 +15,7 @@ import {AuthProvider} from '../providers/auth/auth';
 import { PatientsPage } from "../pages/patients/patients";
 import { SettingsPage } from "../pages/settings/settings";
 import { PlayPage } from "../pages/play/play";
+import { ProfilePage } from "../pages/profile/profile";
 
 
 
@@ -90,6 +91,10 @@ export class MyApp {
     if(page == 'settings') {
       this.nav.setRoot(SettingsPage);
     }
+    console.log('page is', page);
+    if(page == 'profile') {
+      this.nav.setRoot(ProfilePage);
+    }
   }
 
   logout() {
@@ -107,5 +112,14 @@ export class MyApp {
       this.storage.remove('user');
       this.nav.setRoot(LoginPage);
      });
+  }
+
+  openMenu() {
+    this.auth.menuButton = "close";
+    console.log('menu is opened ', this.auth.menuButton);
+  }
+  closeMenu() {
+    this.auth.menuButton = "menu";
+    console.log('menu is closed ', this.auth.menuButton);
   }
 }

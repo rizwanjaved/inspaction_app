@@ -27,6 +27,7 @@ import {AddPatientPage} from "../pages/add-patient/add-patient";
 import {CommonSearchPage} from "../pages/common-search/common-search";
 import {LevelsPage} from "../pages/levels/levels";
 import {PlayPage} from "../pages/play/play";
+import {ProfilePage} from "../pages/profile/profile";
 
 
 import {SearchLocationPage} from "../pages/search-location/search-location";
@@ -68,7 +69,8 @@ import { PerformaProvider } from '../providers/performa/performa';
     TripDetailPage,
     TripsPage,
     LevelsPage,
-    PlayPage
+    PlayPage,
+    ProfilePage
 
   ],
   imports: [
@@ -104,7 +106,8 @@ import { PerformaProvider } from '../providers/performa/performa';
     TripDetailPage,
     TripsPage,
     LevelsPage,
-    PlayPage
+    PlayPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

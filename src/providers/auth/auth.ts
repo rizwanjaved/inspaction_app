@@ -23,6 +23,7 @@ export class AuthProvider {
   public authStatus; 
   public authIssue;
   public authData;
+  public menuButton = "menu";
   constructor(public http: Http,  private storage: Storage, public performa: PerformaProvider) {
     console.log('Hello AuthProvider Provider');
   }

@@ -1,24 +1,27 @@
-<ion-menu side="right" id="authenticated" [content]="content">
+<ion-menu side="right" id="authenticated" [content]="content" 
+(ionOpen) = 'openMenu()'
+(ionClose) = 'closeMenu()'
+>
   <ion-header>
 
   </ion-header>
 
-  <ion-content class ="nav-menu">
+  <ion-content class="nav-menu">
 
     <ion-grid>
       <ion-row>
         <ion-col col-12 (click)="goToPage('home')" menuToggle>
+          <h3 class="text-white">Home</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 (click)="goToPage('profile')" menuToggle>
           <h3 class="text-white">Profile</h3>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-12  (click)="goToPage('settings')" menuToggle>
+        <ion-col col-12 (click)="goToPage('settings')" menuToggle>
           <h3 class="text-white">Settings</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12>
-          <h3 class="text-white">Notifications</h3>
         </ion-col>
       </ion-row>
       <ion-row>
