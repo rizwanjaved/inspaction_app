@@ -9,6 +9,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 // import {NavController, LoadingController, ToastController, Platform} from "ionic-angular/umd";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { PerformaProvider } from '../../providers/performa/performa';
+
 
 
 
@@ -25,12 +27,7 @@ export class RegisterPage {
   imageURI: any;
   imageFileName: any;
   public registerForm;
-  file: File;
-  changeListener($event): void {
-    this.file = $event.target.files[0];
-    // console.log('file is ', this.file);
-    this.uploadFile(this.file)
-  }
+  public image: File;
   constructor(
     public nav: NavController,
     public auth: AuthProvider,
@@ -40,8 +37,8 @@ export class RegisterPage {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     private transfer: FileTransfer,
-    public image: File,
-    public platform: Platform
+    public platform: Platform,
+    public perfroma : PerformaProvider
   ) {
     this.registerForm = this.fb.group({
       userName: ['', Validators.required],
@@ -62,12 +59,9 @@ export class RegisterPage {
     // console.log('all url', target);
   }
   uploadFile($event) {
-    this.image = $event.target.value[0];
+    this.image =  $event.target.files[0];
     console.log('file is', this.image);
   }
-
-
-
   // register and go to home page
   register(res) {
     this.nav.setRoot(LoginPage);
@@ -78,18 +72,14 @@ export class RegisterPage {
       return false;
     } else {
       this.auth.register(this.registerForm.value, this.image)
-        .subscribe(res => {
+        .then((res:any) => {
           console.log('go nawaz', res);
           if (res.type && res.type == 'error') {
             this.validateRegister('error');
           } else {
-            this.validateRegister(JSON.parse(res));
+            this.validateRegister(res);
           }
-        },
-          err => {
-            this.validateRegister(err);
-          }
-        );
+        });
     }
   }
   validateRegister(response) {

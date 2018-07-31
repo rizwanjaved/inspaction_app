@@ -1,50 +1,49 @@
-<ion-menu side="left" id="authenticated" [content]="content">
+<ion-menu side="right" id="authenticated" [content]="content">
   <ion-header>
-    <ion-toolbar class="user-profile">
 
-      <ion-grid>
-        <ion-row>
-          <ion-col col-4>
-              <div class="user-avatar">
-                <img src="../assets/img/avatar.jpeg">
-              </div>
-          </ion-col>
-          <ion-col padding-top col-8>
-            <h2 ion-text class="no-margin bold text-white">
-             {{user?.name}}
-            </h2>
-            <span ion-text color="light">Role Here</span>
-          </ion-col>
-        </ion-row>
-
-        <ion-row no-padding class="other-data">
-          <ion-col no-padding class="column">
-            <button ion-button icon-left small full color="light" menuClose disabled>
-              <ion-icon name="contact"></ion-icon>
-              Edit Profile
-            </button>
-          </ion-col>
-          <ion-col no-padding class="column">
-            <button ion-button icon-left small full color="light" menuClose (click)="logout()">
-              <ion-icon name="log-out"></ion-icon>
-              Log Out
-            </button>
-          </ion-col>
-        </ion-row>
-
-      </ion-grid>
-
-    </ion-toolbar>
   </ion-header>
 
-  <ion-content color="primary">
+  <ion-content class ="nav-menu">
 
-    <ion-list class="user-list">
-      <button ion-item menuClose class="text-1x" *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
-        <ion-icon item-left [name]="menuItem.icon" color="primary"></ion-icon>
-        <span ion-text color="primary">{{menuItem.title}}</span>
-      </button>
-    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 (click)="goToPage('home')" menuToggle>
+          <h3 class="text-white">Profile</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12  (click)="goToPage('settings')" menuToggle>
+          <h3 class="text-white">Settings</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h3 class="text-white">Notifications</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h3 class="text-white">Tournaments</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h3 class="text-white">Options</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h3 class="text-white">Options</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h3 class="text-white">Options</h3>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
   </ion-content>
 
 </ion-menu>

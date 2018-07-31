@@ -13,6 +13,9 @@ import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from '../providers/auth/auth';
 import { PatientsPage } from "../pages/patients/patients";
+import { SettingsPage } from "../pages/settings/settings";
+import { PlayPage } from "../pages/play/play";
+
 
 
 
@@ -30,7 +33,7 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;//LandingPage;//AddPatientPage;
+  rootPage: any = HomePage;//PlayPage;//SettingsPage;////LandingPage;//AddPatientPage;
   user :any;
 
   appMenuItems: Array<MenuItem>;
@@ -50,7 +53,6 @@ export class MyApp {
       {title: 'Patients Page', component: PatientsPage  , icon: 'contact', root:false}
       // {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
-    // this.redirect();
   }
 
   initializeApp() {
@@ -71,17 +73,6 @@ export class MyApp {
     });
   }
 
-  // redirect() {
-  //   this.storage.get('user').then(data => {
-  //     console.log('user-data', data);
-  //     if(data && data.name !== null) {
-  //       this.rootPage = HomePage;
-  //       this.user = data;
-  //     } else {
-  //       this.rootPage = LoginPage;
-  //     }
-  //   });
-  // }
 
   openPage(page) {
     // Reset the content nav to have just this page
@@ -90,6 +81,14 @@ export class MyApp {
       this.nav.setRoot(page.component);
     } else {
       this.nav.push(page.component);
+    }
+  }
+  goToPage(page) {
+    if(page == 'home') {
+      this.nav.setRoot(HomePage);
+    }
+    if(page == 'settings') {
+      this.nav.setRoot(SettingsPage);
     }
   }
 

@@ -12,7 +12,8 @@
 }
 
 .common-bg {
-  background-color: #FAFBFC;
+  // background-color: #FAFBFC;
+  background: url('../assets/chess/bg.jpg') repeat 100% 100%;
 }
 
 .white-bg {
@@ -544,4 +545,65 @@ ion-icon[ng-reflect-disabled="true"] {
 
 .fadeInDown {
   animation-name: fadeInDown;
+}
+
+
+// CUSTOM 
+.ion-menu {
+  top: 100px !important;
+  bottom: 10px !important;
+}
+.menu-inner {
+  top: 10% !important;
+  height: 70% !important;
+  background: #b47e44;  
+  border-radius: 5% 0 0 5%;
+}
+.menu-inner ion-content {
+  background: #b47e44!important;  
+}
+.custom-home-logo ion-img {
+  width: 250px!important;
+  height: 100px!important;
+  background: unset !important;
+}
+.custom-button  {
+  border: 5px solid #b47e44;
+  background: #774111;
+}
+.toolbar-background-md {
+  background: transparent !important;
+}
+.custom-card-settings {
+  border: 5px solid #b47e44;
+  background: #774111;
+}
+.custom-card-settings ion-item  {
+  background: unset !important;
+  color: white;
+}
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+// 
+.play-page .user ion-avatar img {
+  width: 100px;
+  height: 100px;
+  background: unset !important;
+}
+.bg-unset {
+  background: unset !important;
+}
+.text-green {
+  color: #33ac3e !important;
+}
+.pointer {
+  cursor: pointer;
+}
+.nav-menu ion-col {
+  cursor: pointer;
 }

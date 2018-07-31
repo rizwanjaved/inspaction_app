@@ -34,12 +34,12 @@ export class PerformaProvider {
     this.auth_db = new PouchDB('http://192.168.99.6:5984/_users');
     // sync of localstorage db with remote 
     this.remote = 'http://192.168.99.6:5985/performa';
-    let options = {
-        live: true,
-        retry: true,
-        continuous: true
-    };
-    this.db.sync(this.remote, options);
+    // let options = {
+    //     live: true,
+    //     retry: true,
+    //     continuous: true
+    // };
+    // this.db.sync(this.remote, options);
   }
   getImage() {
     this.db.getAttachment('001', 'att_1.txt', function(err, blob_buffer) {
@@ -54,6 +54,9 @@ export class PerformaProvider {
          document.body.appendChild(img);
         }
       });
+  }
+  getDocument() {
+
   }
   /******* patients section *******/
   registerPatients(form, file) {
@@ -92,6 +95,21 @@ export class PerformaProvider {
       }
     });
   });
+  }
+  // get single document 
+  getUserDocument(type, id) {
+    return new Promise(resolve => {
+      this.db.find({
+        selector: {"user_type" : type, "attached_user_id": id},
+        // fields: ['_id', 'title','parent_id','is_enabled','is_parent'],
+        include_docs: true,
+        attachments: true
+        }).then(function (res) {
+          resolve(res);
+        }).catch(function (err) {
+          resolve(err);
+        })
+    });
   }
   savePatientAttachments(file) {
     console.log('putting');
@@ -140,7 +158,8 @@ export class PerformaProvider {
     let _db = this.db;
     console.log('submitted form data', form);
     return new Promise(resolve => {
-      this.db.post(form).then(function (res) {
+      this.db.post(form)
+      .then(function (res) {
         console.log('after register', res);
         if(file) {
           console.log('after register file', file);
@@ -153,7 +172,8 @@ export class PerformaProvider {
           });
         }
         resolve(res);
-      }).catch(function (err) {
+      })
+      .catch(function (err) {
         resolve(err);
       })
     });

@@ -25,6 +25,8 @@ import {PatientsPage} from "../pages/patients/patients";
 import {ViewPatientPage} from "../pages/view-patient/view-patient";
 import {AddPatientPage} from "../pages/add-patient/add-patient";
 import {CommonSearchPage} from "../pages/common-search/common-search";
+import {LevelsPage} from "../pages/levels/levels";
+import {PlayPage} from "../pages/play/play";
 
 
 import {SearchLocationPage} from "../pages/search-location/search-location";
@@ -64,7 +66,10 @@ import { PerformaProvider } from '../providers/performa/performa';
     CommonSearchPage,
     SearchLocationPage,
     TripDetailPage,
-    TripsPage
+    TripsPage,
+    LevelsPage,
+    PlayPage
+
   ],
   imports: [
     BrowserModule,
@@ -97,7 +102,9 @@ import { PerformaProvider } from '../providers/performa/performa';
     CommonSearchPage,
     SearchLocationPage,
     TripDetailPage,
-    TripsPage
+    TripsPage,
+    LevelsPage,
+    PlayPage
   ],
   providers: [
     StatusBar,

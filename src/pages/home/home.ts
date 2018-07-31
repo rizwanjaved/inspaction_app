@@ -8,6 +8,7 @@ import { TripsPage } from "../trips/trips";
 import { SearchLocationPage } from "../search-location/search-location";
 import { CommonSearchPage } from "../common-search/common-search";
 import { LoginPage } from "../login/login";
+import { LevelsPage } from "../levels/levels";
 import { PerformaProvider } from '../../providers/performa/performa';
 
 
@@ -51,8 +52,8 @@ export class HomePage {
     this.selectedPatient = "";
   }
   ionViewCanEnter() {
-    this.redirect();
-    return true;
+    // this.redirect();
+    // return true;
   }
   ionViewDidEnter() {
     this.loadPatients();
@@ -82,7 +83,6 @@ export class HomePage {
   doSearch() {
     this.nav.push(TripsPage);
   }
-
   // choose place
   choosePlace(from) {
     this.nav.push(SearchLocationPage, from);
@@ -98,6 +98,10 @@ export class HomePage {
     this.nav.push(SettingsPage);
   }
 
+  gotToLevels() {
+    console.log('ccccccccccc');
+     this.nav.setRoot(LevelsPage);
+  }
   presentNotifications(myEvent) {
     console.log(myEvent);
     let popover = this.popoverCtrl.create(NotificationsPage);

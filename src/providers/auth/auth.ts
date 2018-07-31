@@ -2,9 +2,11 @@ import { Injectable, ComponentFactoryResolver } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { PerformaProvider } from '../performa/performa';
+
 
 
 /*
@@ -75,22 +77,27 @@ export class AuthProvider {
     }
     let heads:any = new Headers();
     heads.append('Content-Type', 'application/json');  
-    return this.http.put(apiUrl,data,{headers: heads})
-    .map((res: any) => {
-      let toReturn: any = JSON.parse(res._body);
-      if (toReturn.id !== undefined && toReturn.id !== null) {
-        this.performa.registerDoctors(data,file).then((doc)=>{
-          toReturn.attached_user = doc;
-          console.log('register map ', toReturn);
-          debugger;
-          // return toReturn;
-        });
-      }
-    })
-    .catch((e: any) => {
-      console.log('register error ', e);
-      return Observable.of(e._body);
-    })
+    return new Promise(resolve => {
+      this.http.put(apiUrl,data,{headers: heads})
+      .toPromise()
+      .then((res: any) => {
+        let toReturn: any = JSON.parse(res._body);
+        if (toReturn.id !== undefined && toReturn.id !== null) {
+          data.attached_user_id = toReturn.id;
+          data.user_image = file ? true : false; 
+          this.performa.registerDoctors(data,file).then((doc)=>{
+            toReturn.attached_user = doc;
+            console.log('register map ', toReturn);
+            resolve(toReturn);
+          });
+        }
+      })
+      .catch((e: any) => {
+        console.log('register error ', e);
+        resolve(e._body);
+        // return Observable.of(e._body);
+      })
+    }); 
   }
   checkAuth() {
     this.storage.get('user').then(data => {
