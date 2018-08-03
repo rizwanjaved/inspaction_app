@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { PerformaProvider } from '../performa/performa';
+import firebase from 'firebase';
 
 
 
@@ -110,6 +111,26 @@ export class AuthProvider {
         return false;
       }
     });
+  }
+  /******* firebase auth******/
+  loginUser(data): Promise<any> {
+    return firebase.auth().signInWithEmailAndPassword(data.email, data.password);
+  }
+  logoutUser(): Promise<void> {
+    return firebase.auth().signOut();
+  }
+  signupUser(email: any, password: any): Promise<any> {
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password);
+      // .then( (newUser:any) => {
+      //   console.log('user', newUser);
+      //   firebase
+      //   .database()
+      //   .ref('/userProfile')
+      //   .child(newUser.uid)
+      //   .set({ email: email });
+      // });
   }
 
 }

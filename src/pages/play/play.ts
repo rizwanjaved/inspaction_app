@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ListUsersPage } from "../list-users/list-users";
 
 /**
  * Generated class for the PlayPage page.
@@ -14,11 +15,16 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PlayPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public nav: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlayPage');
+  }
+  goToPage(page) {
+    if(page == 'listUsers') {
+      this.nav.push(ListUsersPage);
+    }
   }
 
 }

@@ -16,6 +16,9 @@ import { PatientsPage } from "../pages/patients/patients";
 import { SettingsPage } from "../pages/settings/settings";
 import { PlayPage } from "../pages/play/play";
 import { ProfilePage } from "../pages/profile/profile";
+import { PlayedGamesPage } from "../pages/played-games/played-games";
+import firebase from 'firebase';
+
 
 
 
@@ -34,7 +37,7 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;//PlayPage;//SettingsPage;////LandingPage;//AddPatientPage;
+  rootPage: any = PlayPage;//HomePage;//PlayPage;//SettingsPage;////LandingPage;//AddPatientPage;
   user :any;
 
   appMenuItems: Array<MenuItem>;
@@ -45,7 +48,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public keyboard: Keyboard,
     private storage: Storage,
-    public auth:AuthProvider
+    public auth:AuthProvider,
   ) {
     this.initializeApp();
 
@@ -54,6 +57,26 @@ export class MyApp {
       {title: 'Patients Page', component: PatientsPage  , icon: 'contact', root:false}
       // {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
+    /* firebase */
+    firebase.initializeApp({
+      apiKey: "AIzaSyD7oSJg6Aj57lGST7T9kDDjdLT_HQNdhKU",
+      authDomain: "chess-auth.firebaseapp.com",
+      databaseURL: "https://chess-auth.firebaseio.com",
+      projectId: "chess-auth",
+      storageBucket: "chess-auth.appspot.com",
+      messagingSenderId: "40082295578"
+    });
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.rootPage = LoginPage;
+        unsubscribe();
+      } else {
+        this.rootPage = HomePage;
+        unsubscribe();
+      }
+    });
+    // unsubscribe();
+    /* firebase */
   }
 
   initializeApp() {
@@ -91,27 +114,26 @@ export class MyApp {
     if(page == 'settings') {
       this.nav.setRoot(SettingsPage);
     }
-    console.log('page is', page);
     if(page == 'profile') {
       this.nav.setRoot(ProfilePage);
     }
+    if(page == 'playedGames') {
+      this.nav.push(PlayedGamesPage);
+    }
+    console.log('page is', page);
   }
 
   logout() {
-    this.auth.logout()
-    .subscribe(res => {
-     if(res.success == 200) {
-        this.storage.remove('user');
-        this.nav.setRoot(LoginPage);
-     } else {
+    this.auth.logoutUser()
+    .then(res =>{
+      console.log('logout res', res);       
       this.storage.remove('user');
       this.nav.setRoot(LoginPage);
-     }
-     },
-     err => {
-      this.storage.remove('user');
-      this.nav.setRoot(LoginPage);
-     });
+    },
+    err =>{
+      console.log('err', err);       
+    }
+    );
   }
 
   openMenu() {

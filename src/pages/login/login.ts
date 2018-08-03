@@ -38,15 +38,31 @@ export class LoginPage {
   submitLogin() {
     this.auth.login(this.loginForm.value)
       .subscribe(res =>{
-        if(res.type && res.type== 'error') {
+        if(res.code && res.code == 'auth/wrong-password') {
           this.Validate('error');
         } else {
           let response:any = res ? JSON.parse(res) : 'error';
-          this.Validate(response);
+          this.Validate(res);
         }
       },
       err =>{
        this.Validate(false);
+      }
+      );
+  }
+  fbSubmitLogin() {
+    this.auth.loginUser(this.loginForm.value)
+      .then(res =>{
+        if(res.type && res.type== 'error') {
+          this.Validate('error');
+        } else {
+          // let response:any = res ? JSON.parse(res) : 'error';
+          this.Validate(res);
+        }
+      },
+      err =>{
+        this.Validate('error');
+        console.log('err', err);       
       }
       );
   }
@@ -60,40 +76,17 @@ export class LoginPage {
   Validate(response) {
     let msg;
     msg = "Name or password is incorrect";
-    if(response == 'error') 
-    {
-      msg = this.auth.connectionErrorMessage;
-    }
-    if(!response || (response && response.error)){
+    if(!response || response === 'error' || (response && response.error)){
       this.notify.simpleTimeToast(msg);
     } else {
-      if(response.name !== undefined && response.name !== null) {
         this.login(response);
-      } else {
-        this.notify.simpleTimeToast(msg);
-      }
     } 
   }
 
   login(user) {
-    this.performa.getUserDocument('doctor', 'org.couchdb.user:'+user.name)
-        .then((doc:any) => {
-          let userData:any = doc ? doc.docs[0] : null;
-          if(userData) {
-            if(userData.user_image) {
-              this.performa.getAttachment(userData._id, 'image_1')
-              .then((url:any) => {
-                console.log('data url ', url);
-                userData.image_url =url.toString();
-              });
-            } else {
-              userData.image_url = 'assets/img/user_default.png';
-            }
-            console.log('user data', userData);
-           this.storage.set('user', userData);
-           this.nav.setRoot(HomePage);
-          }
-        });
+    this.storage.set('userData', user.user);
+    console.log('user data', user);
+    this.nav.setRoot(HomePage);
   }
 
   forgotPass() {

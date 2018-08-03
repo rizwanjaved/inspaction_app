@@ -38,48 +38,43 @@ export class RegisterPage {
     public toastCtrl: ToastController,
     private transfer: FileTransfer,
     public platform: Platform,
-    public perfroma : PerformaProvider
+    public perfroma: PerformaProvider
   ) {
     this.registerForm = this.fb.group({
-      userName: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
-      confirm_password: ['', Validators.required],
-      email: [''],
-      grade: [''],
-      retiredCheck: [false],
-      exPersonCheck: [false],
-      placeOfWork: [''],
-      qualification: [''],
-      degree: [''],
-      companyLogo: [''],
-      clientAddress: [''],
-      date: [''],
-      contactNo: [''],
+      confirm_password: ['', Validators.required]
     });
     // console.log('all url', target);
   }
   uploadFile($event) {
-    this.image =  $event.target.files[0];
+    this.image = $event.target.files[0];
     console.log('file is', this.image);
   }
   // register and go to home page
   register(res) {
+    this.notify.simpleTimeToast('User successfully registered');
     this.nav.setRoot(LoginPage);
   }
   registerSubmit() {
     let form = this.registerForm.value;
-    if (form.password !== form.confirm_password) {
+    if (form.password !== form.confirm_password || (form.password.length < 6) || (form.confirm_password.length < 6)) {
       return false;
     } else {
-      this.auth.register(this.registerForm.value, this.image)
-        .then((res:any) => {
-          console.log('go nawaz', res);
-          if (res.type && res.type == 'error') {
-            this.validateRegister('error');
+      let errMsg = "Error registering user";
+      this.auth.signupUser(form.email, form.password)
+        .then((res: any) => {
+          if (res && res.user) {
+            this.register(res);
           } else {
-            this.validateRegister(res);
+            this.notify.simpleTimeToast(errMsg);
           }
-        });
+          console.log('sign up res', res);
+        },
+        err => {
+          this.notify.simpleTimeToast(errMsg);
+        }
+      );
     }
   }
   validateRegister(response) {

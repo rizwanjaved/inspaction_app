@@ -301,7 +301,8 @@ ion-navbar.no-border {
   background-color: #fff;
   &::after {
     content: "";
-    background: url("../assets/img/bg.jpg") no-repeat;
+    // background: url("../assets/img/bg.jpg") no-repeat;
+    background: url('../assets/chess/bg.jpg') repeat 100% 100%;
     background-size: cover;
     top: 0;
     left: 0;
@@ -321,11 +322,11 @@ ion-navbar.no-border {
       width: 86%;
 
       .logo {
-        width: 60px;
+        width: 200px;
         height: 60px;
         margin: 20px auto 0;
         border-radius: 10%;
-        background: url("../assets/img/ionic3-ico.png") no-repeat;
+        background: url("../assets/chess/Logo.png") no-repeat;
         background-size: 100%;
       }
 
@@ -591,9 +592,13 @@ ion-icon[ng-reflect-disabled="true"] {
 
 // 
 .play-page .user ion-avatar img {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   background: unset !important;
+  margin: 0 !important;
+}
+.play-page .user {
+  margin: 0 !important;
 }
 .bg-unset {
   background: unset !important;
@@ -612,4 +617,7 @@ background: #36bb43;
  border-radius: 30%;
  border: 3px solid white;
  color: white;
+}
+.play-page .scroll-content{
+  overflow: hidden;
 }

@@ -6,19 +6,12 @@
     <div padding text-center>
       <div class="logo"></div>
       <h2 ion-text class="text-primary">
-        <strong>Performa</strong>App
+        <!-- <strong>Performa</strong>App -->
       </h2>
     </div>
 
     <!-- Login form -->
     <form class="list-form" [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="person" item-start class="text-primary"></ion-icon>
-          Full Name
-        </ion-label>
-        <ion-input type="text" formControlName="userName"></ion-input>
-      </ion-item>
 
       <ion-item>
         <ion-label floating>
@@ -42,87 +35,6 @@
           Confirm Password
         </ion-label>
         <ion-input type="password" formControlName="confirm_password"></ion-input>
-      </ion-item>
-      <!--  -->
-      <br>
-      <ion-list>
-        <ion-item>
-          <ion-label>Grade</ion-label>
-          <ion-select [(ngModel)]="gaming" formControlName="grade">
-            <ion-option value="consultants">Consultants</ion-option>
-            <ion-option value="professor">Professor</ion-option>
-            <ion-option value="associate">associate</ion-option>
-            <ion-option value="assistant">assistant</ion-option>
-            <ion-option value="sr_registrar">SR Registrar</ion-option>
-            <ion-option value="house_officier">House Officier</ion-option>
-            <ion-option value="reception">Reception</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-
-      <ion-item>
-        <ion-label>Retired</ion-label>
-        <ion-checkbox color="dark" formControlName="retiredCheck"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Ex - Persons</ion-label>
-        <ion-checkbox color="dark" formControlName="exPersonCheck"></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Qualification
-        </ion-label>
-        <ion-input type="text" formControlName="qualification"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Degree
-        </ion-label>
-        <ion-input type="text" formControlName="degree"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Place Of Work
-        </ion-label>
-        <ion-input type="text" formControlName="placeOfWork"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>
-          <ion-icon item-start class="text-primary"></ion-icon>
-          Company Logo
-        </ion-label>
-        <ion-input type="file" accept="image/*" (change)="uploadFile($event)" formControlName="companyLogo"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Client Address
-        </ion-label>
-        <ion-input type="password" formControlName="clientAddress"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="md-calendar" item-start class="text-primary"></ion-icon>
-          Date
-        </ion-label>
-        <ion-datetime class="no-pl" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Contact No
-        </ion-label>
-        <ion-input type="number" formControlName="contactNo"></ion-input>
       </ion-item>
       <!--  -->
 

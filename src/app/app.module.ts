@@ -28,6 +28,8 @@ import {CommonSearchPage} from "../pages/common-search/common-search";
 import {LevelsPage} from "../pages/levels/levels";
 import {PlayPage} from "../pages/play/play";
 import {ProfilePage} from "../pages/profile/profile";
+import {ListUsersPage} from "../pages/list-users/list-users";
+import {PlayedGamesPage} from "../pages/played-games/played-games";
 
 
 import {SearchLocationPage} from "../pages/search-location/search-location";
@@ -70,7 +72,9 @@ import { PerformaProvider } from '../providers/performa/performa';
     TripsPage,
     LevelsPage,
     PlayPage,
-    ProfilePage
+    ProfilePage,
+    ListUsersPage,
+    PlayedGamesPage
 
   ],
   imports: [
@@ -107,7 +111,9 @@ import { PerformaProvider } from '../providers/performa/performa';
     TripsPage,
     LevelsPage,
     PlayPage,
-    ProfilePage
+    ProfilePage,
+    ListUsersPage,
+    PlayedGamesPage
   ],
   providers: [
     StatusBar,

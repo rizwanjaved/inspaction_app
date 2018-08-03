@@ -1,41 +1,47 @@
 <!-- -->
 <ion-header>
-    <ion-navbar>
-      <ion-buttons end>
-        <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content padding class="animated fadeIn common-bg">
-  
-    <h2 text-center class="text-white">
-      Profile
-    </h2>
-  
-    <ion-grid>
-      <ion-card class="custom-card-settings">
-        <ion-card-content text-white>
-          <!-- <ion-card-title>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+
+  <h2 text-center class="text-white">
+    Profile
+  </h2>
+
+  <ion-grid>
+    <ion-card class="custom-card-settings">
+      <ion-card-content text-white>
+        <!-- <ion-card-title>
                 
                   </ion-card-title> -->
-          <ion-item >
-            <ion-label>Sound</ion-label>
-            <ion-toggle checked="false"></ion-toggle>
-          </ion-item>
-          <br>
-          <ion-item>
-            <ion-label>Tips</ion-label>
-            <ion-toggle checked="false"></ion-toggle>
-          </ion-item>
-          <br>
-          <ion-item>
-              <ion-label>Tips</ion-label>
-              <ion-label class="pull-right" text-right>White/Black</ion-label>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-    </ion-grid>
-  </ion-content>
+        <span text-center>
+          <ion-thumbnail item-start>
+            <ion-img width="80" height="80" src="assets/img/user_default.png"></ion-img>
+          </ion-thumbnail>
+        </span>
+        <br>
+        <ion-item>
+          <ion-label>User</ion-label>
+          <ion-label class="pull-right" text-right>{{userData?.email}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>notifications</ion-label>
+          <ion-toggle checked="false"></ion-toggle>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label>Profile Can View </ion-label>
+          <ion-toggle checked="false"></ion-toggle>
+        </ion-item>
+        <br>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>

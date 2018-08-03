@@ -16,16 +16,14 @@
       <ion-avatar item-start>
         <img src="assets/chess/user_1.png">
       </ion-avatar>
-      <h1 class="text-white">Brandon Stock
-        (1336)
-        &nbsp;
+      <h3 class="text-white">Brandon Stock (1336) &nbsp;
         <ion-icon name="ios-flag-outline"></ion-icon>
-      </h1>
+      </h3>
     </ion-item>
   </ion-list>
 
   <ion-card>
-    <img src="assets/chess/bg_chess.jpg" />
+    <img src="assets/chess/bg_chess_1.jpg" />
     <!-- <div class="card-title">Amsterdam</div>
         <div class="card-subtitle">64 Listings</div> -->
   </ion-card>
@@ -35,21 +33,32 @@
       <ion-avatar item-end>
         <img src="assets/chess/user_2.png">
       </ion-avatar>
-      <h1 text-right class="text-white">Emelia Clark
-        (127)
-        &nbsp;
+      <h3 text-right class="text-white">Emelia Clark (127) &nbsp;
         <ion-icon name="ios-flag-outline"></ion-icon>
-      </h1>
+      </h3>
     </ion-item>
   </ion-list>
-  <br>
-  <br>
   <ion-list>
-    <ion-item class="bg-unset">
-      <ion-avatar item-start>
-        <img src="assets/chess/time-icon.png">
-      </ion-avatar>
-      <h3 text-left class="text-green">TIME: 4:20</h3>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-item class="bg-unset">
+            <ion-avatar item-start>
+              <img src="assets/chess/time-icon.png">
+            </ion-avatar>
+            <p text-left class="text-green">TIME: 4:20</p>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item class="bg-unset pointer" (click) = "goToPage('listUsers')">
+            <ion-avatar item-end>
+              <img src="assets/chess/bg_chess.jpg">
+            </ion-avatar>
+            <p text-right class="text-black">Titled Players (122 Online)</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </ion-list>
 </ion-content>
