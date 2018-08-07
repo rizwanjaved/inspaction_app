@@ -1,12 +1,18 @@
 import { Injectable, ComponentFactoryResolver } from '@angular/core';
 import { Http } from '@angular/http';
+import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { PerformaProvider } from '../performa/performa';
+import { NotificationsProvider } from '../notifications/notifications';
+import {HomePage} from "../../pages/home/home";
 import firebase from 'firebase';
+var providerGoogle = new firebase.auth.GoogleAuthProvider();
+var providerFacebook = new firebase.auth.FacebookAuthProvider();
+providerGoogle.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 
 
@@ -25,7 +31,12 @@ export class AuthProvider {
   public authIssue;
   public authData;
   public menuButton = "menu";
-  constructor(public http: Http,  private storage: Storage, public performa: PerformaProvider) {
+  constructor(
+    public http: Http,  
+    private storage: Storage, 
+    public performa: PerformaProvider, 
+    public notify:NotificationsProvider
+  ) {
     console.log('Hello AuthProvider Provider');
   }
   // 
@@ -113,17 +124,19 @@ export class AuthProvider {
     });
   }
   /******* firebase auth******/
-  loginUser(data): Promise<any> {
-    return firebase.auth().signInWithEmailAndPassword(data.email, data.password);
+  loginUser(data,google= false): Promise<any> {
+    if(!google) {
+      return firebase.auth().signInWithEmailAndPassword(data.email, data.password);
+    }    
   }
   logoutUser(): Promise<void> {
     return firebase.auth().signOut();
   }
   signupUser(email: any, password: any): Promise<any> {
     return firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password);
-      // .then( (newUser:any) => {
+    .auth()
+    .createUserWithEmailAndPassword(email, password);
+    // .then( (newUser:any) => {
       //   console.log('user', newUser);
       //   firebase
       //   .database()
@@ -131,6 +144,72 @@ export class AuthProvider {
       //   .child(newUser.uid)
       //   .set({ email: email });
       // });
-  }
-
+    }
+    //social authentications 
+    googleLogin():Promise<any>  {
+      // return firebase.auth().signInWithPopup(providerGoogle).then(function(result:any) {
+      //   // This gives you a Google Access Token. You can use it to access the Google API.
+      //   var token = result.credential.accessToken;
+      //   // The signed-in user info.
+      //   var user = result.user;
+      //   console.log('google is', result);
+      //   return result;
+      //   // ...
+      // }).catch(function(error) {
+      //   // Handle Errors here.
+      //   var errorCode = error.code;
+      //   var errorMessage = error.message;
+      //   // The email of the user's account used.
+      //   var email = error.email;
+      //   // The firebase.auth.AuthCredential type that was used.
+      //   var credential = error.credential;
+      //   console.log('google error is', error);
+      //   return error;
+      // });
+      firebase.auth().signInWithRedirect(providerGoogle);
+      return firebase.auth().getRedirectResult().then(function(result:any) {
+        if (result.credential) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // ...
+        }
+        // The signed-in user info.
+        var user = result.user;
+        return result;
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        return error;
+      });
+    }
+    // facebook authentication
+    facebookLogin():Promise<any>  {
+      firebase.auth().signInWithRedirect(providerFacebook);
+      return firebase.auth().getRedirectResult().then(function(result:any) {
+        if (result.credential) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // ...
+        }
+        // The signed-in user info.
+        var user = result.user;
+        return result;
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        return error;
+      });
+    }
 }

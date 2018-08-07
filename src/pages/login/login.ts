@@ -126,5 +126,27 @@ export class LoginPage {
     });
     forgot.present();
   }
+  loginWithGoogle(type) {
+    this.auth.googleLogin().then(res=> {
+      console.log('res google res zzz', res);
+      if(res.error) {
+            this.notify.simpleTimeToast(res.error.message);
+          }
+          if(res.user) {
+            this.nav.setRoot(HomePage);
+          }
+    });
+  }
+  loginWithFacebook(type) {
+    this.auth.facebookLogin().then(res=> {
+      console.log('res facebook res zzz', res);
+      if(res.error) {
+            this.notify.simpleTimeToast(res.error.message);
+          }
+          if(res.user) {
+            this.nav.setRoot(HomePage);
+          }
+    });
+  }
 
 }

@@ -35,12 +35,14 @@
         SIGN IN
       </button>
 
-      <!-- <p text-center ion-text color="secondary">Or Sign in with:</p> -->
+    </div>
+  </form>
+      <p text-center ion-text color="secondary">Or Sign in with:</p>
 
-      <!-- <ion-grid>
+      <ion-grid>
         <ion-row>
           <ion-col col-4>
-            <button ion-button icon-only block class="btn-facebook">
+            <button ion-button icon-only block class="btn-facebook" (click) = "loginWithFacebook()">
               <ion-icon name="logo-facebook"></ion-icon>
             </button>
           </ion-col>
@@ -50,15 +52,13 @@
             </button>
           </ion-col>
           <ion-col col-4>
-            <button ion-button icon-only block class="btn-gplus">
+            <button ion-button icon-only block class="btn-gplus" (click) = "loginWithGoogle()">
               <ion-icon name="logo-googleplus"></ion-icon>
             </button>
           </ion-col>
         </ion-row>
-      </ion-grid> -->
+      </ion-grid>
 
-    </div>
-  </form>
 
 
 
