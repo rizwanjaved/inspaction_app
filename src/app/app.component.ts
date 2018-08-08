@@ -37,7 +37,7 @@ export interface MenuItem {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PlayPage;//HomePage;//PlayPage;//SettingsPage;////LandingPage;//AddPatientPage;
+  rootPage: any;// PlayPage;//HomePage;//PlayPage;//SettingsPage;////LandingPage;//AddPatientPage;
   user :any;
 
   appMenuItems: Array<MenuItem>;
@@ -134,6 +134,7 @@ export class MyApp {
     .then(res =>{
       console.log('logout res', res);       
       this.storage.remove('user');
+      this.storage.remove('userData');
       this.nav.setRoot(LoginPage);
     },
     err =>{

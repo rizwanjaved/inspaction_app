@@ -13,6 +13,8 @@ import firebase from 'firebase';
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
 var providerFacebook = new firebase.auth.FacebookAuthProvider();
 providerGoogle.addScope('https://www.googleapis.com/auth/contacts.readonly');
+// providerFacebook.addScope('user_birthday');
+
 
 
 
@@ -166,50 +168,58 @@ export class AuthProvider {
       //   console.log('google error is', error);
       //   return error;
       // });
-      firebase.auth().signInWithRedirect(providerGoogle);
-      return firebase.auth().getRedirectResult().then(function(result:any) {
-        if (result.credential) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
+      return firebase.auth().signInWithRedirect(providerGoogle).then(function(result:any) {
+        return firebase.auth().getRedirectResult().then(function(result:any) {
+          if (result.credential) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // ...
+          }
+          // The signed-in user info.
+          var user = result.user;
+          console.log('user auth', user);
+          return result;
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
           // ...
-        }
-        // The signed-in user info.
-        var user = result.user;
-        return result;
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        return error;
+          console.log('user auth error', error);
+  
+          return error;
+        });
       });
     }
     // facebook authentication
     facebookLogin():Promise<any>  {
-      firebase.auth().signInWithRedirect(providerFacebook);
-      return firebase.auth().getRedirectResult().then(function(result:any) {
-        if (result.credential) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
-          // ...
-        }
-        // The signed-in user info.
-        var user = result.user;
-        return result;
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        return error;
+      // firebase.auth().signInWithRedirect(providerFacebook);
+      // return firebase.auth().getRedirectResult().
+      return firebase.auth().signInWithRedirect(providerFacebook).then(function(result:any) {
+        return firebase.auth().getRedirectResult().then(function(result:any) {   
+          if (result.credential) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // ...
+          }
+          // The signed-in user info.
+          var user = result.user;
+          console.log('fb auth result', result);
+          return result;
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          console.log('fb auth error', error);          
+          return error;
+        });
       });
     }
 }

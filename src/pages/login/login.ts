@@ -1,10 +1,10 @@
-import {Component} from "@angular/core";
-import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
-import {HomePage} from "../home/home";
-import {RegisterPage} from "../register/register";
+import { Component } from "@angular/core";
+import { NavController, AlertController, ToastController, MenuController } from "ionic-angular";
+import { HomePage } from "../home/home";
+import { RegisterPage } from "../register/register";
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {AuthProvider} from '../../providers/auth/auth';
-import {NotificationsProvider} from '../../providers/notifications/notifications';
+import { AuthProvider } from '../../providers/auth/auth';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 import { Storage } from '@ionic/storage';
 import { PerformaProvider } from '../../providers/performa/performa';
 
@@ -18,15 +18,15 @@ import { PerformaProvider } from '../../providers/performa/performa';
 export class LoginPage {
   public loginForm;
   constructor(
-    public nav: NavController, 
-    public forgotCtrl: AlertController, 
-    public fb:FormBuilder, 
-    public menu: MenuController, 
+    public nav: NavController,
+    public forgotCtrl: AlertController,
+    public fb: FormBuilder,
+    public menu: MenuController,
     public toastCtrl: ToastController,
-    public auth :AuthProvider,
+    public auth: AuthProvider,
     private storage: Storage,
-    public notify : NotificationsProvider,
-    public performa : PerformaProvider
+    public notify: NotificationsProvider,
+    public performa: PerformaProvider
   ) {
     this.menu.swipeEnable(false);
     this.loginForm = this.fb.group({
@@ -37,33 +37,33 @@ export class LoginPage {
 
   submitLogin() {
     this.auth.login(this.loginForm.value)
-      .subscribe(res =>{
-        if(res.code && res.code == 'auth/wrong-password') {
+      .subscribe(res => {
+        if (res.code && res.code == 'auth/wrong-password') {
           this.Validate('error');
         } else {
-          let response:any = res ? JSON.parse(res) : 'error';
+          let response: any = res ? JSON.parse(res) : 'error';
           this.Validate(res);
         }
       },
-      err =>{
-       this.Validate(false);
-      }
+        err => {
+          this.Validate(false);
+        }
       );
   }
   fbSubmitLogin() {
     this.auth.loginUser(this.loginForm.value)
-      .then(res =>{
-        if(res.type && res.type== 'error') {
+      .then(res => {
+        if (res.type && res.type == 'error') {
           this.Validate('error');
         } else {
           // let response:any = res ? JSON.parse(res) : 'error';
           this.Validate(res);
         }
       },
-      err =>{
-        this.Validate('error');
-        console.log('err', err);       
-      }
+        err => {
+          this.Validate('error');
+          console.log('err', err);
+        }
       );
   }
 
@@ -76,11 +76,11 @@ export class LoginPage {
   Validate(response) {
     let msg;
     msg = "Name or password is incorrect";
-    if(!response || response === 'error' || (response && response.error)){
+    if (!response || response === 'error' || (response && response.error)) {
       this.notify.simpleTimeToast(msg);
     } else {
-        this.login(response);
-    } 
+      this.login(response);
+    }
   }
 
   login(user) {
@@ -127,25 +127,27 @@ export class LoginPage {
     forgot.present();
   }
   loginWithGoogle(type) {
-    this.auth.googleLogin().then(res=> {
+    this.auth.googleLogin().then(res => {
       console.log('res google res zzz', res);
-      if(res.error) {
-            this.notify.simpleTimeToast(res.error.message);
-          }
-          if(res.user) {
-            this.nav.setRoot(HomePage);
-          }
+      if (res.error) {
+        this.notify.simpleTimeToast(res.error.message);
+      }
+      if (res.user) {
+        this.nav.setRoot(HomePage);
+      }
     });
   }
   loginWithFacebook(type) {
-    this.auth.facebookLogin().then(res=> {
+    this.auth.facebookLogin().then(res => {
       console.log('res facebook res zzz', res);
-      if(res.error) {
-            this.notify.simpleTimeToast(res.error.message);
-          }
-          if(res.user) {
-            this.nav.setRoot(HomePage);
-          }
+      if (res.error) {
+        this.notify.simpleTimeToast(res.error.message);
+      }
+      if (res.credential && res.credential.providerId == "facebook.com") {
+        this.nav.setRoot(HomePage);
+      } else {
+        this.notify.simpleTimeToast(res.message);
+      }
     });
   }
 
