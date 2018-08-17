@@ -6,7 +6,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 import { Storage } from '@ionic/storage';
-import { PerformaProvider } from '../../providers/performa/performa';
 
 
 
@@ -26,7 +25,6 @@ export class LoginPage {
     public auth: AuthProvider,
     private storage: Storage,
     public notify: NotificationsProvider,
-    public performa: PerformaProvider
   ) {
     this.menu.swipeEnable(false);
     this.loginForm = this.fb.group({
@@ -35,21 +33,6 @@ export class LoginPage {
     });
   }
 
-  submitLogin() {
-    this.auth.login(this.loginForm.value)
-      .subscribe(res => {
-        if (res.code && res.code == 'auth/wrong-password') {
-          this.Validate('error');
-        } else {
-          let response: any = res ? JSON.parse(res) : 'error';
-          this.Validate(res);
-        }
-      },
-        err => {
-          this.Validate(false);
-        }
-      );
-  }
   fbSubmitLogin() {
     this.auth.loginUser(this.loginForm.value)
       .then(res => {

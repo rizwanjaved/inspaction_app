@@ -9,7 +9,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 // import {NavController, LoadingController, ToastController, Platform} from "ionic-angular/umd";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-import { PerformaProvider } from '../../providers/performa/performa';
 
 
 
@@ -37,8 +36,7 @@ export class RegisterPage {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     private transfer: FileTransfer,
-    public platform: Platform,
-    public perfroma: PerformaProvider
+    public platform: Platform
   ) {
     this.registerForm = this.fb.group({
       email: ['', Validators.required],

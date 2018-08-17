@@ -7,12 +7,8 @@ import { Keyboard } from '@ionic-native/keyboard';
 
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
-import { LandingPage } from "../pages/landing/landing";
-import { AddPatientPage } from "../pages/add-patient/add-patient";
-import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from '../providers/auth/auth';
-import { PatientsPage } from "../pages/patients/patients";
 import { SettingsPage } from "../pages/settings/settings";
 import { PlayPage } from "../pages/play/play";
 import { ProfilePage } from "../pages/profile/profile";
@@ -54,7 +50,7 @@ export class MyApp {
 
     this.appMenuItems = [
       {title: 'Home', component: HomePage, icon: 'home', root:true},
-      {title: 'Patients Page', component: PatientsPage  , icon: 'contact', root:false}
+      {title: 'Patients Page', component: 'zzz'  , icon: 'contact', root:false}
       // {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
     /* firebase */

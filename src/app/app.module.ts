@@ -15,16 +15,10 @@ import {WeatherProvider} from "../services/weather";
 import {MyApp} from "./app.component";
 
 import {SettingsPage} from "../pages/settings/settings";
-import {CheckoutTripPage} from "../pages/checkout-trip/checkout-trip";
 import {HomePage} from "../pages/home/home";
 import {LoginPage} from "../pages/login/login";
 import {NotificationsPage} from "../pages/notifications/notifications";
 import {RegisterPage} from "../pages/register/register";
-import {LandingPage} from "../pages/landing/landing";
-import {PatientsPage} from "../pages/patients/patients";
-import {ViewPatientPage} from "../pages/view-patient/view-patient";
-import {AddPatientPage} from "../pages/add-patient/add-patient";
-import {CommonSearchPage} from "../pages/common-search/common-search";
 import {LevelsPage} from "../pages/levels/levels";
 import {PlayPage} from "../pages/play/play";
 import {ProfilePage} from "../pages/profile/profile";
@@ -32,17 +26,12 @@ import {ListUsersPage} from "../pages/list-users/list-users";
 import {PlayedGamesPage} from "../pages/played-games/played-games";
 
 
-import {SearchLocationPage} from "../pages/search-location/search-location";
-import {TripDetailPage} from "../pages/trip-detail/trip-detail";
-import {TripsPage} from "../pages/trips/trips";
-import {LocalWeatherPage} from "../pages/local-weather/local-weather";
 
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
 import { NotificationsProvider } from '../providers/notifications/notifications';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-import { PerformaProvider } from '../providers/performa/performa';
 
 
 // import services
@@ -56,20 +45,10 @@ import { PerformaProvider } from '../providers/performa/performa';
   declarations: [
     MyApp,
     SettingsPage,
-    CheckoutTripPage,
     HomePage,
     LoginPage,
-    LocalWeatherPage,
     NotificationsPage,
     RegisterPage,
-    LandingPage,
-    PatientsPage,
-    AddPatientPage,
-    ViewPatientPage,
-    CommonSearchPage,
-    SearchLocationPage,
-    TripDetailPage,
-    TripsPage,
     LevelsPage,
     PlayPage,
     ProfilePage,
@@ -95,20 +74,10 @@ import { PerformaProvider } from '../providers/performa/performa';
   entryComponents: [
     MyApp,
     SettingsPage,
-    CheckoutTripPage,
     HomePage,
     LoginPage,
-    LocalWeatherPage,
     NotificationsPage,
     RegisterPage,
-    LandingPage,
-    PatientsPage,
-    AddPatientPage,
-    ViewPatientPage,
-    CommonSearchPage,
-    SearchLocationPage,
-    TripDetailPage,
-    TripsPage,
     LevelsPage,
     PlayPage,
     ProfilePage,
@@ -127,7 +96,6 @@ import { PerformaProvider } from '../providers/performa/performa';
     FileTransfer,
     FileTransferObject,
     File,
-    PerformaProvider
     // FileUploadOptions,
   ]
 })
