@@ -6,6 +6,7 @@ import { NotificationsPage } from "../notifications/notifications";
 import { SettingsPage } from "../settings/settings";
 import { LoginPage } from "../login/login";
 import { LevelsPage } from "../levels/levels";
+import { PlaySettingsPage } from "../play-settings/play-settings";
 import { AuthProvider } from '../../providers/auth/auth';
 
 
@@ -79,8 +80,10 @@ export class HomePage {
   }
 
   gotToLevels() {
-    console.log('ccccccccccc');
      this.nav.setRoot(LevelsPage);
+  }
+  gotToPlaySettings() {
+    this.nav.setRoot(PlaySettingsPage);
   }
   presentNotifications(myEvent) {
     console.log(myEvent);

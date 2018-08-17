@@ -13,6 +13,7 @@ import { SettingsPage } from "../pages/settings/settings";
 import { PlayPage } from "../pages/play/play";
 import { ProfilePage } from "../pages/profile/profile";
 import { PlayedGamesPage } from "../pages/played-games/played-games";
+import { TopPlayersPage } from "../pages/top-players/top-players";
 import firebase from 'firebase';
 
 
@@ -121,6 +122,9 @@ export class MyApp {
     }
     if(page == 'playedGames') {
       this.nav.push(PlayedGamesPage);
+    }
+    if(page == 'topPlayers') {
+      this.nav.push(TopPlayersPage);
     }
     console.log('page is', page);
   }

@@ -111,5 +111,5 @@
         <variable name="PAGE_LINK_DOMAIN" value="example.page.link" />
     </plugin>
     <engine name="windows" spec="^5.0.0" />
-    <engine name="android" spec="6.4.0" />
+    <engine name="android" spec="^6.4.0" />
 </widget>
