@@ -6,86 +6,100 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>playedGames</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding class="common-bg">
-    <h1>Last Played Games</h1>
+  <ion-navbar>
+    <ion-title>playedGames</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="common-bg">
+  <h1>History Of Played Games</h1>
+  <!-- list of played -->
+  <ion-grid [hidden]="!showList">
+    <ion-list>
+      <!--  -->
+      <ion-list>
+        <ion-item (click)="showDetails()" class="pointer">
+          <ion-thumbnail item-start>
+            <img src="assets/chess/user_1.png">
+          </ion-thumbnail>
+          <ion-badge item-end>8/3/2018</ion-badge>
+          <p>VS zack Knight</p>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item (click)="showDetails()" class="pointer">
+          <ion-thumbnail item-start>
+            <img src="assets/chess/user_2.png">
+          </ion-thumbnail>
+          <ion-badge item-end>5/5/2017</ion-badge>
+          <p>VS Kill Shot</p>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item (click)="showDetails()" class="pointer">
+          <ion-thumbnail item-start>
+            <img src="assets/chess/user_1.png">
+          </ion-thumbnail>
+          <ion-badge item-end>1/1/2016</ion-badge>
+          <p>VS Edward</p>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+    </ion-list>
+  </ion-grid>
+  <!--  -->
+  <ion-grid [hidden]="showList">
     <ion-card>
       <ion-card-title>
         Played on
         <ion-badge item-end>8/3/2018</ion-badge>
       </ion-card-title>
-      <img src="assets/chess/gamePlay.gif" />
+      <div id="playedGame" style="width: 400px; float:none; margin: auto"></div>      
       <ion-card-content>
-        <ion-card-title>
-          <ion-list>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-6>
-                  <ion-item class="bg-unset">
-                    <ion-avatar item-start>
-                      <img src="assets/chess/user_2.png">
-                    </ion-avatar>
-                    <h3 text-left class="text-black">Lana Rose (57) <ion-icon name="ios-flag-outline"></ion-icon></h3>
-                  </ion-item>
-                </ion-col>
-                <ion-col col-6>
-                  <ion-item class="bg-unset pointer">
-                    <ion-avatar item-end>
-                      <img src="assets/chess/user_1.png">
-                    </ion-avatar>
-                    <h3 text-right class="text-black">Kill Shot (128) <ion-icon name="ios-flag-outline"></ion-icon></h3>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-list>
-        </ion-card-title>
-        <p>
-          KillShot Wins (57 Moves)
-        </p>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-        <ion-card-title>
-          Played on
-          <ion-badge item-end>7/3/2018</ion-badge>
-        </ion-card-title>
-        <img src="assets/chess/gamePlay.gif" />
-        <ion-card-content>
-          <ion-card-title>
-            <ion-list>
-              <ion-grid>
+        <ion-list>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <ion-item class="bg-unset">
+                  <ion-avatar item-start>
+                    <img src="assets/chess/user_2.png">
+                  </ion-avatar>
+                  <h3 text-left class="text-black">Lana Rose (57)
+                    <ion-icon name="ios-flag-outline"></ion-icon>
+                  </h3>
+                </ion-item>
+                <ion-item class="bg-unset pointer">
+                  <ion-avatar item-end>
+                    <img src="assets/chess/user_1.png">
+                  </ion-avatar>
+                  <h3 text-right class="text-black">Kill Shot (128)
+                    <ion-icon name="ios-flag-outline"></ion-icon>
+                  </h3>
+                </ion-item>
+              </ion-col>
+              <ion-col col-6>
+                <!--  -->
                 <ion-row>
                   <ion-col col-6>
-                    <ion-item class="bg-unset">
-                      <ion-avatar item-start>
-                        <img src="assets/chess/user_2.png">
-                      </ion-avatar>
-                      <h3 text-left class="text-black">Lana Rose (57) <ion-icon name="ios-flag-outline"></ion-icon></h3>
-                    </ion-item>
+                    <h1>
+                      <ion-icon ios="ios-arrow-back" md="md-arrow-back" (click) ="changeMoves()"></ion-icon>
+                    </h1>
                   </ion-col>
                   <ion-col col-6>
-                    <ion-item class="bg-unset pointer">
-                      <ion-avatar item-end>
-                        <img src="assets/chess/user_1.png">
-                      </ion-avatar>
-                      <h3 text-right class="text-black">Kill Shot (128) <ion-icon name="ios-flag-outline"></ion-icon></h3>
-                    </ion-item>
+                    <h1>
+                      <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" (click) ="changeMoves()"></ion-icon>
+                    </h1>
                   </ion-col>
                 </ion-row>
-              </ion-grid>
-            </ion-list>
-          </ion-card-title>
-          <p>
-            KillShot Wins (100 Moves)
-          </p>
-        </ion-card-content>
-      </ion-card>
-  
-  </ion-content>
+                <!--  -->
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+
+</ion-content>

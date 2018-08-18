@@ -7,6 +7,8 @@ import { SettingsPage } from "../settings/settings";
 import { LoginPage } from "../login/login";
 import { LevelsPage } from "../levels/levels";
 import { PlaySettingsPage } from "../play-settings/play-settings";
+import { MatchesPage } from "../matches/matches";
+import { WatchPage } from "../watch/watch";
 import { AuthProvider } from '../../providers/auth/auth';
 
 
@@ -85,6 +87,10 @@ export class HomePage {
   gotToPlaySettings() {
     this.nav.setRoot(PlaySettingsPage);
   }
+  gotToMatches() {
+    this.nav.push(MatchesPage);
+  }
+
   presentNotifications(myEvent) {
     console.log(myEvent);
     let popover = this.popoverCtrl.create(NotificationsPage);

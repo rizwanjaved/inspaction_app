@@ -26,6 +26,8 @@ import {ListUsersPage} from "../pages/list-users/list-users";
 import {PlayedGamesPage} from "../pages/played-games/played-games";
 import {PlaySettingsPage} from "../pages/play-settings/play-settings";
 import {TopPlayersPage} from "../pages/top-players/top-players";
+import {MatchesPage} from "../pages/matches/matches";
+import {WatchPage} from "../pages/watch/watch";
 
 
 
@@ -58,7 +60,9 @@ import { File } from '@ionic-native/file';
     ListUsersPage,
     PlayedGamesPage,
     PlaySettingsPage,
-    TopPlayersPage
+    TopPlayersPage,
+    WatchPage,
+    MatchesPage
 
   ],
   imports: [
@@ -89,7 +93,9 @@ import { File } from '@ionic-native/file';
     ListUsersPage,
     PlayedGamesPage,
     PlaySettingsPage,
-    TopPlayersPage
+    TopPlayersPage,
+    WatchPage,
+    MatchesPage
   ],
   providers: [
     StatusBar,

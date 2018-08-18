@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ListUsersPage } from "../list-users/list-users";
+declare var $: any;
+declare function chessInit(message: string): any;
+
+
 
 /**
  * Generated class for the PlayPage page.
@@ -19,6 +23,9 @@ export class PlayPage {
   }
 
   ionViewDidLoad() {
+    if(chessInit !== undefined) {
+      chessInit('board2');
+    }
     console.log('ionViewDidLoad PlayPage');
   }
   goToPage(page) {
