@@ -1,52 +1,51 @@
-<ion-menu side="right" id="authenticated" [content]="content" 
-(ionOpen) = 'openMenu()'
-(ionClose) = 'closeMenu()'
->
+<ion-menu side="left" id="authenticated" [content]="content">
   <ion-header>
+    <ion-toolbar class="user-profile">
 
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+              <div class="user-avatar">
+                <img [src]="userImage">
+              </div>
+          </ion-col>
+          <ion-col padding-top col-8>
+            <h2 ion-text eclass="no-margin bold text-white">
+             {{user?.name}}
+            </h2>
+            <span ion-text color="light">{{user?.user_type}}</span>
+            <p ion-text color="light">{{user?.email}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row no-padding class="other-data">
+          <ion-col no-padding class="column">
+            <button ion-button icon-left small full color="light" menuClose disabled>
+              <ion-icon name="contact"></ion-icon>
+              Edit Profile
+            </button>
+          </ion-col>
+          <ion-col no-padding class="column">
+            <button ion-button icon-left small full color="light" menuClose (click)="logout()">
+              <ion-icon name="log-out"></ion-icon>
+              Log Out
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-toolbar>
   </ion-header>
 
-  <ion-content class="nav-menu">
+  <ion-content color="primary">
 
-    <ion-grid>
-      <ion-row>
-        <ion-col col-12 (click)="goToPage('home')" menuToggle>
-          <h3 class="text-white">Home</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 (click)="goToPage('profile')" menuToggle>
-          <h3 class="text-white">Profile</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 (click)="goToPage('settings')" menuToggle>
-          <h3 class="text-white">Settings</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12>
-          <h3 class="text-white">Tournaments</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12>
-          <h3 class="text-white" (click)="goToPage('topPlayers')" menuToggle>Top Players</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12>
-          <h3 class="text-white" (click)="goToPage('playedGames')" menuToggle>Played Games</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 (click)="logout()" menuToggle>
-          <h3 class="text-white">Logout</h3>
-        </ion-col>
-      </ion-row>
-
-    </ion-grid>
-
+    <ion-list class="user-list">
+      <button ion-item menuClose class="text-1x" *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
+        <ion-icon item-left [name]="menuItem.icon" color="primary"></ion-icon>
+        <span ion-text color="primary">{{menuItem.title}}</span>
+      </button>
+    </ion-list>
   </ion-content>
 
 </ion-menu>

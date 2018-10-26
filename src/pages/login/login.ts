@@ -65,6 +65,22 @@ export class LoginPage {
       this.login(response);
     }
   }
+  tempLogin() {
+    let form = this.loginForm.value;
+    console.log('form value',form);
+    if(form.email == 'inspector') 
+    {
+      this.storage.set('userType', 'inspector');
+      this.nav.setRoot(HomePage);
+    } else if(form.email == 'user') {
+      this.storage.set('userType', 'user');
+      this.nav.setRoot(HomePage);
+    } else {
+      let msg = "Name or password is incorrect";
+      this.notify.simpleTimeToast(msg);
+    }
+    
+  }
 
   login(user) {
     this.storage.set('userData', user.user);

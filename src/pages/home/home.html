@@ -1,5 +1,5 @@
 <!-- -->
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-buttons end>
         <button ion-button menuToggle>
@@ -7,30 +7,39 @@
         </button>
       </ion-buttons>
   </ion-navbar>
+</ion-header> -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Ionic 3</strong> Start Theme
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding class="animated fadeIn common-bg">
 
   <p text-center class="custom-home-logo">
     <ion-thumbnail item-start>
-      <ion-img width="80" height="80" src="assets/chess/Logo.png"></ion-img>
+      <!-- <ion-img width="80" height="80" src="assets/chess/Logo.png"></ion-img> -->
     </ion-thumbnail>
   </p>
   <ion-grid>
       <p>
-        <button ion-button large full round class="custom-button" (click) = "gotToPlaySettings()">COMPUTER</button>
+        <button ion-button large full class="custom-button" (click) = "gotToPlaySettings()">COMPUTER</button>
       </p>
       <p>
-        <button ion-button large full round class="custom-button" (click) = "gotToPlaySettings()">MULTIPLAYER</button>
-      </p>
-      <p>
-        <button ion-button large full round class="custom-button" (click) = "gotToPlaySettings()">ONLINE</button>
-      </p>
-      <p>
-        <button ion-button large full round class="custom-button" (click) = "gotToPlaySettings()">PLAY WITH FRIENDS</button>
-      </p>
-      <p>
-        <button ion-button large full round class="custom-button" (click) = "gotToMatches()">Matches</button>
+        <button ion-button large full class="custom-button" (click) = "gotToPlaySettings()">MULTIPLAYER</button>
       </p>
   </ion-grid>
 </ion-content>

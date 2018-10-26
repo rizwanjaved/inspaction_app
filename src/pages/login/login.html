@@ -10,7 +10,7 @@
     </div>
 
     <!-- Login form -->
-    <form class="list-form"  [formGroup]="loginForm" (ngSubmit)="fbSubmitLogin()">
+    <form class="list-form"  [formGroup]="loginForm" (ngSubmit)="tempLogin()">
       <ion-item>
         <ion-label floating>
           <ion-icon name="mail" item-start class="text-primary"></ion-icon>
@@ -37,7 +37,7 @@
 
     </div>
   </form>
-      <p text-center ion-text color="secondary">Or Sign in with:</p>
+      <!-- <p text-center ion-text color="secondary">Or Sign in with:</p>
 
       <ion-grid>
         <ion-row>
@@ -46,26 +46,26 @@
               <ion-icon name="logo-facebook"></ion-icon>
             </button>
           </ion-col>
-          <!-- <ion-col col-4>
+          <ion-col col-4>
             <button ion-button icon-only block class="btn-twitter">
               <ion-icon name="logo-twitter"></ion-icon>
             </button>
-          </ion-col> -->
+          </ion-col>
           <ion-col col-6>
             <button ion-button icon-only block class="btn-gplus" (click) = "loginWithGoogle()">
               <ion-icon name="logo-googleplus"></ion-icon>
             </button>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
 
 
 
 
     <!-- Other links -->
-    <div text-center margin-top>
+    <!-- <div text-center margin-top>
       <span ion-text color="secondary" tappable (click)="register()">New here? <strong>Sign up</strong></span>
-    </div>
+    </div> -->
 
   </div>
 </ion-content>
