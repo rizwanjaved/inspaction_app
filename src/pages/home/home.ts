@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { NotificationsPage } from "../notifications/notifications";
 import { SettingsPage } from "../settings/settings";
 import { LoginPage } from "../login/login";
+import { CheckBookingPage } from "../check-booking/check-booking";
 import { LevelsPage } from "../levels/levels";
 import { PlaySettingsPage } from "../play-settings/play-settings";
 import { MatchesPage } from "../matches/matches";
@@ -89,6 +90,10 @@ export class HomePage {
   }
   gotToMatches() {
     this.nav.push(MatchesPage);
+  }
+  navToCheckBooking() {
+    console.log('navToCheckBooking hit');
+    this.nav.push(CheckBookingPage);
   }
 
   presentNotifications(myEvent) {

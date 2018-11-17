@@ -28,6 +28,7 @@ import {PlaySettingsPage} from "../pages/play-settings/play-settings";
 import {TopPlayersPage} from "../pages/top-players/top-players";
 import {MatchesPage} from "../pages/matches/matches";
 import {WatchPage} from "../pages/watch/watch";
+import {CheckBookingPage} from "../pages/check-booking/check-booking";
 
 
 
@@ -62,8 +63,8 @@ import { File } from '@ionic-native/file';
     PlaySettingsPage,
     TopPlayersPage,
     WatchPage,
-    MatchesPage
-
+    MatchesPage,
+    CheckBookingPage
   ],
   imports: [
     BrowserModule,
@@ -95,7 +96,8 @@ import { File } from '@ionic-native/file';
     PlaySettingsPage,
     TopPlayersPage,
     WatchPage,
-    MatchesPage
+    MatchesPage,
+    CheckBookingPage
   ],
   providers: [
     StatusBar,
