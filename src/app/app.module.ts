@@ -28,8 +28,9 @@ import {PlaySettingsPage} from "../pages/play-settings/play-settings";
 import {TopPlayersPage} from "../pages/top-players/top-players";
 import {MatchesPage} from "../pages/matches/matches";
 import {WatchPage} from "../pages/watch/watch";
-
-
+import {CheckBookingPage} from "../pages/check-booking/check-booking";
+import {CarInspectionPage} from "../pages/car-inspection/car-inspection";
+import {BookAppointmentPage} from "../pages/book-appointment/book-appointment";
 
 
 import { AuthProvider } from '../providers/auth/auth';
@@ -62,8 +63,10 @@ import { File } from '@ionic-native/file';
     PlaySettingsPage,
     TopPlayersPage,
     WatchPage,
-    MatchesPage
-
+    MatchesPage,
+    CheckBookingPage,
+    CarInspectionPage,
+    BookAppointmentPage
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,10 @@ import { File } from '@ionic-native/file';
     PlaySettingsPage,
     TopPlayersPage,
     WatchPage,
-    MatchesPage
+    MatchesPage,
+    CheckBookingPage,
+    CarInspectionPage,
+    BookAppointmentPage
   ],
   providers: [
     StatusBar,
