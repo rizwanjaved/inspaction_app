@@ -50,6 +50,22 @@ export class LoginPage {
       );
   }
 
+  submitLogin() {
+    this.auth.login(this.loginForm.value)
+      .subscribe(res => {
+        if (res.type && res.type == 'error') {
+          this.Validate('error');
+        } else {
+          let response: any = res ? JSON.parse(res) : 'error';
+          this.Validate(response);
+        }
+      },
+        err => {
+          this.Validate(false);
+        }
+      );
+  }
+
   // go to register page
   register() {
     this.nav.setRoot(RegisterPage);
