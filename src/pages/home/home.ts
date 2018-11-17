@@ -30,6 +30,7 @@ export class HomePage {
   }
   public patients;
   public selectedPatient;
+  public userRole: string;
   n;
   constructor(
     private storage: Storage,
@@ -42,11 +43,12 @@ export class HomePage {
   ionViewWillEnter() {
     // this.search.pickup = "Rio de Janeiro, Brazil";
     // this.search.dropOff = "Same as pickup";
-    this.storage.get('pickup').then((val) => {
+    this.storage.get('userType').then((val) => {
       if (val === null) {
         this.search.name = "Rio de Janeiro, Brazil";
       } else {
         this.search.name = val;
+        this.userRole = this.search.name;
       }
     }).catch((err) => {
       console.log(err)
