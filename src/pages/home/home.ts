@@ -5,6 +5,11 @@ import { Storage } from '@ionic/storage';
 import { NotificationsPage } from "../notifications/notifications";
 import { SettingsPage } from "../settings/settings";
 import { LoginPage } from "../login/login";
+import { CheckBookingPage } from "../check-booking/check-booking";
+import { BookAppointmentPage} from "../book-appointment/book-appointment";0
+import { CarInspectionPage } from "../car-inspection/car-inspection";
+import {ViewAppointmentPage} from  "../view-appointment/view-appointment";
+import {InspectionResultPage} from "../inspection-result/inspection-result";
 import { LevelsPage } from "../levels/levels";
 import { PlaySettingsPage } from "../play-settings/play-settings";
 import { MatchesPage } from "../matches/matches";
@@ -28,6 +33,7 @@ export class HomePage {
   }
   public patients;
   public selectedPatient;
+  public userRole: string;
   n;
   constructor(
     private storage: Storage,
@@ -40,11 +46,12 @@ export class HomePage {
   ionViewWillEnter() {
     // this.search.pickup = "Rio de Janeiro, Brazil";
     // this.search.dropOff = "Same as pickup";
-    this.storage.get('pickup').then((val) => {
+    this.storage.get('userType').then((val) => {
       if (val === null) {
         this.search.name = "Rio de Janeiro, Brazil";
       } else {
         this.search.name = val;
+        this.userRole = this.search.name;
       }
     }).catch((err) => {
       console.log(err)
@@ -89,6 +96,21 @@ export class HomePage {
   }
   gotToMatches() {
     this.nav.push(MatchesPage);
+  }
+  navToCheckBooking() {
+    this.nav.push(CheckBookingPage);
+  }
+  navToCarInspection() {
+    this.nav.push(CarInspectionPage);
+  }
+  navToBookAppointment() {
+    this.nav.push(BookAppointmentPage);
+  }
+  navToViewAppointment() {
+    this.nav.push(ViewAppointmentPage);
+  }
+  navToInspectionResult() {
+    this.nav.push(InspectionResultPage);
   }
 
   presentNotifications(myEvent) {
