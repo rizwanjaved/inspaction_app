@@ -6,6 +6,7 @@ import { NotificationsPage } from "../notifications/notifications";
 import { SettingsPage } from "../settings/settings";
 import { LoginPage } from "../login/login";
 import { CheckBookingPage } from "../check-booking/check-booking";
+import { BookAppointmentPage} from "../book-appointment/book-appointment";
 import { CarInspectionPage } from "../car-inspection/car-inspection";
 import { LevelsPage } from "../levels/levels";
 import { PlaySettingsPage } from "../play-settings/play-settings";
@@ -99,6 +100,9 @@ export class HomePage {
   }
   navToCarInspection() {
     this.nav.push(CarInspectionPage);
+  }
+  navToBookAppointment() {
+    this.nav.push(BookAppointmentPage);
   }
 
   presentNotifications(myEvent) {
