@@ -17,6 +17,10 @@ export class ViewAppointmentPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  backToPreviousPage() {
+    this.navCtrl.pop();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewAppointmentPage');
   }
