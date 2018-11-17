@@ -9,6 +9,7 @@ import { CheckBookingPage } from "../check-booking/check-booking";
 import { BookAppointmentPage} from "../book-appointment/book-appointment";0
 import { CarInspectionPage } from "../car-inspection/car-inspection";
 import {ViewAppointmentPage} from  "../view-appointment/view-appointment";
+import {InspectionResultPage} from "../inspection-result/inspection-result";
 import { LevelsPage } from "../levels/levels";
 import { PlaySettingsPage } from "../play-settings/play-settings";
 import { MatchesPage } from "../matches/matches";
@@ -107,6 +108,9 @@ export class HomePage {
   }
   navToViewAppointment() {
     this.nav.push(ViewAppointmentPage);
+  }
+  navToInspectionResult() {
+    this.nav.push(InspectionResultPage);
   }
 
   presentNotifications(myEvent) {
