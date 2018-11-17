@@ -29,7 +29,7 @@ import {TopPlayersPage} from "../pages/top-players/top-players";
 import {MatchesPage} from "../pages/matches/matches";
 import {WatchPage} from "../pages/watch/watch";
 import {CheckBookingPage} from "../pages/check-booking/check-booking";
-
+import {CarInspectionPage} from "../pages/car-inspection/car-inspection";
 
 
 
@@ -64,7 +64,8 @@ import { File } from '@ionic-native/file';
     TopPlayersPage,
     WatchPage,
     MatchesPage,
-    CheckBookingPage
+    CheckBookingPage,
+    CarInspectionPage
   ],
   imports: [
     BrowserModule,
@@ -97,7 +98,8 @@ import { File } from '@ionic-native/file';
     TopPlayersPage,
     WatchPage,
     MatchesPage,
-    CheckBookingPage
+    CheckBookingPage,
+    CarInspectionPage
   ],
   providers: [
     StatusBar,
