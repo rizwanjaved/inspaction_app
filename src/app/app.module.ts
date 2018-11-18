@@ -34,6 +34,7 @@ import {BookAppointmentPage} from "../pages/book-appointment/book-appointment";
 import {ViewAppointmentPage} from "../pages/view-appointment/view-appointment";
 import {InspectionResultPage} from "../pages/inspection-result/inspection-result";
 import {ContraventionPage} from "../pages/contravention/contravention";
+import {RegiterationPage} from "../pages/regiteration/regiteration";
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
 import { NotificationsProvider } from '../providers/notifications/notifications';
@@ -70,7 +71,8 @@ import { File } from '@ionic-native/file';
     BookAppointmentPage,
     ViewAppointmentPage,
     InspectionResultPage,
-    ContraventionPage
+    ContraventionPage,
+    RegiterationPage
   ],
   imports: [
     BrowserModule,
@@ -108,7 +110,8 @@ import { File } from '@ionic-native/file';
     BookAppointmentPage,
     ViewAppointmentPage,
     InspectionResultPage,
-    ContraventionPage
+    ContraventionPage,
+    RegiterationPage
   ],
   providers: [
     StatusBar,
