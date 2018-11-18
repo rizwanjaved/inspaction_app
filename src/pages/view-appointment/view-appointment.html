@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ContraventionPage page.
+  Generated template for the ViewAppointmentPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,15 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Contravention</ion-title>
+    <ion-title>view-appointment</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>  <ion-list>
+<ion-content padding>
+  <ion-list>
     <ion-item>
-
+      <ion-label>Name:</ion-label>
+      <ion-label>Owner name</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Car No:</ion-label>
@@ -37,16 +39,6 @@
       <ion-label>Time</ion-label>
       <ion-label>Booked time</ion-label>
     </ion-item>
-    <ion-item>
-      <ion-checkbox></ion-checkbox>
-      <ion-label>Contravention</ion-label>
-      <ion-label>Amount</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-card>
-        <ion-card-content>something....</ion-card-content>
-      </ion-card>
-    </ion-item>
   </ion-list>
-  <button type="button" ion-button icon-start block color="dark" tappable (click)="Pay()">Pay</button>
+  <button type="button" ion-button icon-start block color="dark" tappable (click)="backToPreviousPage()">Back</button>
 </ion-content>

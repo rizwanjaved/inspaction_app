@@ -31,8 +31,9 @@ import {WatchPage} from "../pages/watch/watch";
 import {CheckBookingPage} from "../pages/check-booking/check-booking";
 import {CarInspectionPage} from "../pages/car-inspection/car-inspection";
 import {BookAppointmentPage} from "../pages/book-appointment/book-appointment";
-
-
+import {ViewAppointmentPage} from "../pages/view-appointment/view-appointment";
+import {InspectionResultPage} from "../pages/inspection-result/inspection-result";
+import {ContraventionPage} from "../pages/contravention/contravention";
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
 import { NotificationsProvider } from '../providers/notifications/notifications';
@@ -66,7 +67,10 @@ import { File } from '@ionic-native/file';
     MatchesPage,
     CheckBookingPage,
     CarInspectionPage,
-    BookAppointmentPage
+    BookAppointmentPage,
+    ViewAppointmentPage,
+    InspectionResultPage,
+    ContraventionPage
   ],
   imports: [
     BrowserModule,
@@ -101,7 +105,10 @@ import { File } from '@ionic-native/file';
     MatchesPage,
     CheckBookingPage,
     CarInspectionPage,
-    BookAppointmentPage
+    BookAppointmentPage,
+    ViewAppointmentPage,
+    InspectionResultPage,
+    ContraventionPage
   ],
   providers: [
     StatusBar,

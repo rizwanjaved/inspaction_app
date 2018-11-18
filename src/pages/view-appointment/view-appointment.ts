@@ -2,27 +2,27 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ContraventionPage page.
+ * Generated class for the ViewAppointmentPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-contravention',
-  templateUrl: 'contravention.html',
+  selector: 'page-view-appointment',
+  templateUrl: 'view-appointment.html',
 })
-export class ContraventionPage {
+export class ViewAppointmentPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  Pay(){
-    console.log('paytime')
+  backToPreviousPage() {
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContraventionPage');
+    console.log('ionViewDidLoad ViewAppointmentPage');
   }
 
 }

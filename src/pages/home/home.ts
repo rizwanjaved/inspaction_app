@@ -6,8 +6,11 @@ import { NotificationsPage } from "../notifications/notifications";
 import { SettingsPage } from "../settings/settings";
 import { LoginPage } from "../login/login";
 import { CheckBookingPage } from "../check-booking/check-booking";
-import { BookAppointmentPage} from "../book-appointment/book-appointment";
+import { BookAppointmentPage} from "../book-appointment/book-appointment";0
 import { CarInspectionPage } from "../car-inspection/car-inspection";
+import {ViewAppointmentPage} from  "../view-appointment/view-appointment";
+import {InspectionResultPage} from "../inspection-result/inspection-result";
+import {ContraventionPage} from "../contravention/contravention";
 import { LevelsPage } from "../levels/levels";
 import { PlaySettingsPage } from "../play-settings/play-settings";
 import { MatchesPage } from "../matches/matches";
@@ -103,6 +106,15 @@ export class HomePage {
   }
   navToBookAppointment() {
     this.nav.push(BookAppointmentPage);
+  }
+  navToViewAppointment() {
+    this.nav.push(ViewAppointmentPage);
+  }
+  navToInspectionResult() {
+    this.nav.push(InspectionResultPage);
+  }
+  navToContraventions() {
+    this.nav.push(ContraventionPage);
   }
 
   presentNotifications(myEvent) {
