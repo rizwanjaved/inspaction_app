@@ -41,6 +41,10 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 
+import { ListAppointmentsPage } from "../pages/list-appointments/list-appointments";
+import { ApiProvider } from '../providers/api/api';
+
+
 
 // import services
 // end import services
@@ -72,7 +76,8 @@ import { File } from '@ionic-native/file';
     ViewAppointmentPage,
     InspectionResultPage,
     ContraventionPage,
-    RegiterationPage
+    RegiterationPage,
+    ListAppointmentsPage
   ],
   imports: [
     BrowserModule,
@@ -111,7 +116,8 @@ import { File } from '@ionic-native/file';
     ViewAppointmentPage,
     InspectionResultPage,
     ContraventionPage,
-    RegiterationPage
+    RegiterationPage,
+    ListAppointmentsPage
   ],
   providers: [
     StatusBar,
@@ -125,6 +131,7 @@ import { File } from '@ionic-native/file';
     FileTransfer,
     FileTransferObject,
     File,
+    ApiProvider,
     // FileUploadOptions,
   ]
 })

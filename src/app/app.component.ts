@@ -69,13 +69,20 @@ export class MyApp {
       storageBucket: "chessfirebase-59ede.appspot.com",
       messagingSenderId: "933123560066"
     });
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        this.rootPage = LoginPage;
-        unsubscribe();
-      } else {
+    // const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+    //   if (!user) {
+    //     this.rootPage = LoginPage;
+    //     unsubscribe();
+    //   } else {
+    //     this.rootPage = HomePage;
+    //     unsubscribe();
+    //   }
+    // });
+    this.storage.get('accessToken').then(token=> {
+      if(token) {
         this.rootPage = HomePage;
-        unsubscribe();
+      } else {
+        this.rootPage = LoginPage;
       }
     });
     // unsubscribe();

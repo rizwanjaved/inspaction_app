@@ -53,7 +53,7 @@ export class LoginPage {
   submitLogin() {
     this.auth.login(this.loginForm.value)
       .subscribe(res => {
-        if (res.type && res.type == 'error') {
+        if (res && res.type && res.type == 'error') {
           this.Validate('error');
         } else {
           let response: any = res ? JSON.parse(res) : 'error';
@@ -75,7 +75,7 @@ export class LoginPage {
   Validate(response) {
     let msg;
     msg = "Name or password is incorrect";
-    if (!response || response === 'error' || (response && response.error)) {
+    if (!response || response === 'error' || response.success == false || (response && response.error)) {
       this.notify.simpleTimeToast(msg);
     } else {
       this.login(response);
@@ -98,9 +98,9 @@ export class LoginPage {
     
   }
 
-  login(user) {
-    this.storage.set('userData', user.user);
-    console.log('user data', user);
+  login(data) {
+    this.storage.set('userData', data.user);
+    this.storage.set('accessToken', data.access_token);
     this.nav.setRoot(HomePage);
   }
 

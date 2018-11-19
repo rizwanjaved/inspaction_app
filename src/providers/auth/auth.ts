@@ -28,7 +28,7 @@ providerGoogle.addScope('https://www.googleapis.com/auth/contacts.readonly');
 export class AuthProvider {
   // public remoteUrl = 'http://25d4e1ce.ngrok.io/';
   public remoteUrl = 'http://192.168.99.6:5985/';
-  public localUrl = 'http://localhost:8000/api/'
+  public localUrl = 'http://localhost:8000/api/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   public authStatus; 
   public authIssue;
@@ -51,12 +51,7 @@ export class AuthProvider {
   // 
   login(data): Observable<any> {
     let apiURL = this.localUrl+'login/';
-    var headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-    headers.append('Accept', 'application/json');
-    headers.append('content-type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    let options  = this.headers();
     return this.http.post(apiURL,{
       'email': data.email,
       'password': data.password
@@ -164,5 +159,16 @@ export class AuthProvider {
           return error;
         });
       });
+    }
+    headers(token=null) {
+      var headers = new Headers();
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept', 'application/json');
+      headers.append('content-type', 'application/json');
+      if(token) {
+        headers.append('Authorization', 'Bearer '+token);        
+      }
+      return new RequestOptions({ headers: headers });
     }
 }

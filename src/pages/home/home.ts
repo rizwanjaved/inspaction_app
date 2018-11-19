@@ -17,6 +17,8 @@ import { PlaySettingsPage } from "../play-settings/play-settings";
 import { MatchesPage } from "../matches/matches";
 import { WatchPage } from "../watch/watch";
 import { AuthProvider } from '../../providers/auth/auth';
+import { ListAppointmentsPage } from "../list-appointments/list-appointments";
+
 
 
 
@@ -88,6 +90,10 @@ export class HomePage {
   // to go account page
   goToAccount() {
     this.nav.push(SettingsPage);
+  }
+
+  goToListAppointmentsPage() {
+    this.nav.push(ListAppointmentsPage);
   }
 
   gotToLevels() {

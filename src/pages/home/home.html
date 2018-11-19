@@ -14,7 +14,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>
-        <strong>Ionic 3</strong> Start Theme
+        <strong>INSPECTION</strong> App
       </ion-title>
       <ion-buttons end>
         <button ion-button tappable (click)="presentNotifications($event)">
@@ -36,7 +36,7 @@
     </p>
     <ion-grid *ngIf="userRole == 'inspector'">
       <p>
-        <button ion-button large full class="custom-button" (click)="navToCheckBooking()">CHECK BOOKING</button>
+        <button ion-button large full class="custom-button" (click)="goToListAppointmentsPage()">Check Bookings & Appointments</button>
       </p>
       <p>
         <button ion-button large full class="custom-button" (click)="navToCarInspection()">INSPECT CAR</button>
