@@ -50,18 +50,7 @@ export class HomePage {
   ionViewWillEnter() {
     // this.search.pickup = "Rio de Janeiro, Brazil";
     // this.search.dropOff = "Same as pickup";
-    this.storage.get('userType').then((val) => {
-      if (val === null) {
-        this.search.name = "Rio de Janeiro, Brazil";
-      } else {
-        this.search.name = val;
-        this.userRole = this.search.name;
-      }
-    }).catch((err) => {
-      console.log(err)
-    });
     // this.performa.selectedPatient = null;
-    this.selectedPatient = "";
   }
   ionViewCanEnter() {
     // this.redirect();
@@ -70,6 +59,12 @@ export class HomePage {
   ionViewDidEnter() {
     this.n = this.auth.menuButton;
     console.log('menu button is',this.n);
+    this.storage.get('userType').then((val) => {
+      this.userRole = val;
+      console.log('userType', this.userRole);
+    }).catch((err) => {
+      console.log(err)
+    });
   }
   // ionViewDidLoad() {
   //   this.loadPatients();
@@ -92,8 +87,9 @@ export class HomePage {
     this.nav.push(SettingsPage);
   }
 
-  goToListAppointmentsPage() {
-    this.nav.push(ListAppointmentsPage);
+  goToListAppointmentsPage(type) {
+    console.log('type', type);
+    this.nav.push(ListAppointmentsPage, {inspectLink:type});
   }
 
   gotToLevels() {

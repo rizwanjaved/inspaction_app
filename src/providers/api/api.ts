@@ -22,18 +22,22 @@ export class ApiProvider {
   public localUrl = 'http://localhost:8000/api/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   public menuButton = "menu";
+  public access_token;
   constructor(
     public http: Http,
     private storage: Storage,
     public notify: NotificationsProvider
   ) {
     console.log('Hello AuthProvider Provider');
+    this.storage.get('accessToken').then(token=>{
+      this.access_token = token;
+    });
   }
 
  
   postData(data = null, url): Observable<any> {
-    let apiURL = this.localUrl+'url';
-    let options  = this.headers();
+    let apiURL = this.localUrl+url;
+    let options  = this.headers(this.access_token);
     return this.http.post(apiURL,data, options)
       .map((res: any) => {
         // this.authData = JSON.stringify(res);
@@ -47,12 +51,12 @@ export class ApiProvider {
         return Observable.of(e._body);
       })
   }
-  headers(token = null) {
+  headers(token) {
     var headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
     headers.append('Accept', 'application/json');
-    headers.append('content-type', 'application/json');
+    // headers.append('content-type', 'application/json');
     headers.append('Authorization', 'Bearer ' + token);
     return new RequestOptions({ headers: headers });
   }

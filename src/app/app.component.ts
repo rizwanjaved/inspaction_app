@@ -51,24 +51,9 @@ export class MyApp {
 
     this.appMenuItems = [
       {title: 'Home', component: HomePage, icon: 'home', root:true},
-      {title: 'Patients Page', component: 'zzz'  , icon: 'contact', root:false}
       // {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
     ];
     /* firebase */
-    firebase.initializeApp({
-      // apiKey: "AIzaSyD7oSJg6Aj57lGST7T9kDDjdLT_HQNdhKU",
-      // authDomain: "chess-auth.firebaseapp.com",
-      // databaseURL: "https://chess-auth.firebaseio.com",
-      // projectId: "chess-auth",
-      // storageBucket: "chess-auth.appspot.com",
-      // messagingSenderId: "40082295578"
-      apiKey: "AIzaSyDNCzalbUymms031SENugYd5ij8uS1Y2RU",
-      authDomain: "chessfirebase-59ede.firebaseapp.com",
-      databaseURL: "https://chessfirebase-59ede.firebaseio.com",
-      projectId: "chessfirebase-59ede",
-      storageBucket: "chessfirebase-59ede.appspot.com",
-      messagingSenderId: "933123560066"
-    });
     // const unsubscribe = firebase.auth().onAuthStateChanged(user => {
     //   if (!user) {
     //     this.rootPage = LoginPage;
@@ -137,17 +122,24 @@ export class MyApp {
   }
 
   logout() {
-    this.auth.logoutUser()
-    .then(res =>{
-      console.log('logout res', res);       
-      this.storage.remove('user');
-      this.storage.remove('userData');
-      this.nav.setRoot(LoginPage);
-    },
-    err =>{
-      console.log('err', err);       
-    }
-    );
+    // this.auth.logoutUser()
+    // .then(res =>{
+    //   console.log('logout res', res);       
+    //   this.storage.remove('user');
+    //   this.storage.remove('userData');
+    //   this.storage.remove('userData');
+    //   this.nav.setRoot(LoginPage);
+    // },
+    // err =>{
+    //   console.log('err', err);       
+    // }
+    // );
+    this.storage.remove('user');
+    this.storage.remove('userData');
+    this.storage.remove('userCar');
+    this.storage.remove('accessToken');
+    this.storage.remove('userType');
+    this.nav.setRoot(LoginPage);
   }
 
   openMenu() {

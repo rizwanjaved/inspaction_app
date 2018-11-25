@@ -12,33 +12,41 @@
 
 </ion-header>
 
+<ion-content padding *ngIf="appointment">
+  <form class="list-form" [formGroup]="carInspectionForm" (ngSubmit)="doCarInspection()">
 
-<ion-content padding>
-    <form class="list-form" [formGroup]="carInspectionForm" (ngSubmit)="doCarInspection()">
-
-        <ion-item>
-          <ion-label>Car No:</ion-label>
-          <ion-input type="number" formControlName="carNumber" placeholder="Number"></ion-input>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Car Type:</ion-label>
-          <ion-select placeholder="Types" formControlName="carType">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
-          </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-textarea formControlName="text"></ion-textarea>
-          </ion-item>
-        <div>
-          <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!carInspectionForm.valid">
-            Done
-          </button>
-        </div>
-      </form>
+    <ion-item>
+      <ion-label>Car No:</ion-label>
+      <ion-input type="text" placeholder="Car No" disabled value="{{appointment.car.car_no}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Car Model:</ion-label>
+      <ion-input type="text" placeholder="Car Model" disabled value="{{appointment.car.model}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Car Type:</ion-label>
+      <ion-input type="text" placeholder="Car Type" disabled value="{{appointment.car.type.type}}"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label>Result:</ion-label>
+        <ion-select placeholder="Types" formControlName="result">
+          <ion-option value="pass">Pass</ion-option>
+          <ion-option value="fail">Fail</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Location:</ion-label>
+        <ion-input type="text" placeholder="location" formControlName="location" ></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-label>Details :</ion-label>
+      <ion-textarea formControlName="details"></ion-textarea>
+    </ion-item>
+    <br>
+    <div>
+      <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!carInspectionForm.valid">
+        Done
+      </button>
+    </div>
+  </form>
 </ion-content>

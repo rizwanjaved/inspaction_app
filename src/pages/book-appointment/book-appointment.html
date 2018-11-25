@@ -13,37 +13,64 @@
 </ion-header>
 
 
-<ion-content padding>
+<!-- <ion-content padding *ngIf="car">
+  <div>
+  <form class="list-form" [formGroup]="bookAppointmentForm" (ngSubmit)="doBookAppointment()">
+    <ion-item>
+      <ion-label>Model:</ion-label>
+      <ion-input type="text" placeholder="" disabled Value="car.model"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Car No:</ion-label>
+      <ion-input type="number" placeholder="" disabled value="car.car_no"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>TYPE:</ion-label>
+        <ion-select placeholder="Types" disabled>
+          <ion-option value="nes" selected>{{car.type.type}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <div>
+        <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!bookAppointmentForm.valid">
+          Book Appointment Now
+        </button>
+      </div>
+  </form>
+  </div>
+</ion-content> -->
+<ion-content padding *ngIf="car">
+  <!--  -->
     <form class="list-form" [formGroup]="bookAppointmentForm" (ngSubmit)="doBookAppointment()">
-
-        <ion-item>
-          <ion-label>NAME:</ion-label>
-          <ion-input type="text" formControlName="name" placeholder="OWNER NAME"></ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-label>Model:</ion-label>
+        <ion-input type="text" value="{{car.model}}" readony></ion-input>
+      </ion-item>
     
-        <ion-item>
-            <ion-label>CAR NO:</ion-label>
-            <ion-input type="number" formControlName="carNumber" placeholder="PLATE NO"></ion-input>
-          </ion-item>
-
-        <ion-item>
-          <ion-label>TYPE:</ion-label>
-          <ion-select placeholder="Types" formControlName="type">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
-          </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-textarea formControlName="text"></ion-textarea>
-          </ion-item>
-        <div>
-          <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!bookAppointmentForm.valid">
-            Done
-          </button>
-        </div>
-      </form>
+      <ion-item>
+        <ion-label>Car No:</ion-label>
+        <ion-input type="text" value="{{car.car_no}}" readonly></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Car No:</ion-label>
+        <ion-input type="text" value="{{car.type.type}}" readonly></ion-input>
+      </ion-item>
+     
+    
+      <ion-item>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+    
+      <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!bookAppointmentForm.valid">
+        Book Appointment Now
+      </button>
+    </form>
+  <!--  -->
 </ion-content>

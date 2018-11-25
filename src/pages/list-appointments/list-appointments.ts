@@ -37,31 +37,54 @@ import { NotificationsProvider } from '../../providers/notifications/notificatio
 })
 export class ListAppointmentsPage {
   appointments;
+  inspectLink;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public auth:AuthProvider,
     public api: ApiProvider,
-    public notify: NotificationsProvider
+    public notify: NotificationsProvider,
+    private storage: Storage,
   ){
 
+  }
+  ionViewDidEnter() {
+    this.inspectLink = this.navParams.get('inspectLink');
+    this.storage.get('accessToken').then((token) => {
+      this.api.access_token = token;
+      this.getAllAppointments();
+    }).catch((err) => {
+      console.log(err)
+    });
+    console.log('  this.inspectLink ', this.inspectLink );
   }
 
 
   getAllAppointments() {
+    this.notify.presentLoader('Appointments list is loading');
     this.api.postData(null, 'getAllAppointments/')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
+          this.notify.dismissLoader();
           this.notify.simpleTimeToast('Some error occured');
         } else {
           let response: any = res ? JSON.parse(res) : 'error';
-        this.appointments = response;
+        this.appointments = response ? response.appointments : null;
+        console.log('appointments', this.appointments);
+          this.notify.dismissLoader();
         }
       },
         err => {
+          this.notify.dismissLoader();
           this.notify.simpleTimeToast(err);
         }
       );
+  }
+  viewAppointment(apt) {
+    this.navCtrl.push(ViewAppointmentPage, {appointment:apt})
+  }
+  inspect(apt) {
+    this.navCtrl.push(CarInspectionPage, { appointment: apt });
   }
 
 }

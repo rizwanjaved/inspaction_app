@@ -14,7 +14,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>
-        <strong>INSPECTION</strong> App
+        INSPECTION APP
       </ion-title>
       <ion-buttons end>
         <button ion-button tappable (click)="presentNotifications($event)">
@@ -34,15 +34,15 @@
         <!-- <ion-img width="80" height="80" src="assets/chess/Logo.png"></ion-img> -->
       </ion-thumbnail>
     </p>
-    <ion-grid *ngIf="userRole == 'inspector'">
+    <ion-grid *ngIf="userRole == 'Inspector'">
       <p>
-        <button ion-button large full class="custom-button" (click)="goToListAppointmentsPage()">Check Bookings & Appointments</button>
+        <button ion-button large full class="custom-button" (click)="goToListAppointmentsPage('fromList')">Check Bookings & Appointments</button>
       </p>
       <p>
-        <button ion-button large full class="custom-button" (click)="navToCarInspection()">INSPECT CAR</button>
+        <button ion-button large full class="custom-button" (click)="goToListAppointmentsPage('fromInspect')">INSPECT CAR</button>
       </p>
     </ion-grid>
-    <ion-grid *ngIf="userRole == 'user'">
+    <ion-grid *ngIf="userRole == 'User'">
       <p>
         <button ion-button large full class="custom-button" (click)="navToBookAppointment()">BOOK AN APPOINTMENT</button>
       </p>

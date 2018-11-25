@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import {NavController, LoadingController, ToastController} from "ionic-angular";
+import { NavController, LoadingController, ToastController } from "ionic-angular";
 import 'rxjs/add/operator/map';
 
 /*
@@ -12,10 +12,10 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class NotificationsProvider {
-
+  public loading;
   constructor(
     public http: Http,
-    public loadingCtrl: LoadingController, 
+    public loadingCtrl: LoadingController,
     public toastCtrl: ToastController
   ) {
     // console.log('Hello NotificationsProvider Provider');
@@ -29,6 +29,16 @@ export class NotificationsProvider {
       position: 'bottom'
     });
     toast.present();
+  }
+
+  presentLoader(text=null) {
+    this.loading = this.loadingCtrl.create({
+      content: text ? text : 'Please wait...'
+    });
+    this.loading.present();
+  }
+  dismissLoader() {
+    this.loading.dismiss();
   }
 
 }

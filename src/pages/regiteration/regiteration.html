@@ -14,35 +14,32 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label>Name:</ion-label>
-      <ion-label>Owner name</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Car No:</ion-label>
-      <ion-label>Plate no</ion-label>
-    </ion-item>
+  <form class="list-form" [formGroup]="registrationForm" (ngSubmit)="payRegistration()">
     <ion-item>
       <ion-label>Model:</ion-label>
-      <ion-label>manufaturing year</ion-label>
+      <ion-input type="text" value="{{car?.model}}" readony></ion-input>
     </ion-item>
+  
     <ion-item>
-      <ion-label>Type</ion-label>
-      <ion-label>Car type</ion-label>
+      <ion-label>Car No:</ion-label>
+      <ion-input type="text" value="{{car?.car_no}}" readonly></ion-input>
     </ion-item>
+  
     <ion-item>
-      <ion-label></ion-label>
-      <ion-label>Amount</ion-label>
+      <ion-label>Car No:</ion-label>
+      <ion-input type="text" value="{{car?.type.type}}" readonly></ion-input>
     </ion-item>
+  
     <ion-item>
-      <ion-label>Registration Fee</ion-label>
-      <ion-label>2000</ion-label>
+      <ion-label>Late Fee:</ion-label>
+      <ion-input type="number" formControlName="late_fee"></ion-input>
     </ion-item>
+  
     <ion-item>
-      <ion-label>Late Fee</ion-label>
-      <ion-label>late amount</ion-label>
+      <ion-label>Registration Fee:</ion-label>
+      <ion-input type="number" formControlName="registration_fee"></ion-input>
     </ion-item>
-  </ion-list>
-  <button type="button" ion-button icon-start block color="dark" tappable (click)="register()">Register</button>
+  
+    <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!registrationForm.valid">Pay RegistrationForm</button>
+  </form>
 </ion-content>
