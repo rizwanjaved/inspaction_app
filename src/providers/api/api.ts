@@ -19,7 +19,8 @@ import { NotificationsProvider } from '../notifications/notifications';
 */
 @Injectable()
 export class ApiProvider {
-  public localUrl = 'http://localhost:8000/api/';
+  // public localUrl = 'http://localhost:8000/api/';
+  public localUrl = 'http://192.168.0.103:8000/api/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   public menuButton = "menu";
   public access_token;

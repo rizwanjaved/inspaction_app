@@ -56,24 +56,6 @@ export class RegisterPage {
   }
   registerSubmit() {
     let form = this.registerForm.value;
-    if (form.password !== form.confirm_password || (form.password.length < 6) || (form.confirm_password.length < 6)) {
-      return false;
-    } else {
-      let errMsg = "Error registering user";
-      this.auth.signupUser(form.email, form.password)
-        .then((res: any) => {
-          if (res && res.user) {
-            this.register(res);
-          } else {
-            this.notify.simpleTimeToast(errMsg);
-          }
-          console.log('sign up res', res);
-        },
-        err => {
-          this.notify.simpleTimeToast(errMsg);
-        }
-      );
-    }
   }
   validateRegister(response) {
     let msg;

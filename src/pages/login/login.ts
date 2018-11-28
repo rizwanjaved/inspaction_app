@@ -33,22 +33,6 @@ export class LoginPage {
     });
   }
 
-  fbSubmitLogin() {
-    this.auth.loginUser(this.loginForm.value)
-      .then(res => {
-        if (res.type && res.type == 'error') {
-          this.Validate('error');
-        } else {
-          // let response:any = res ? JSON.parse(res) : 'error';
-          this.Validate(res);
-        }
-      },
-        err => {
-          this.Validate('error');
-          console.log('err', err);
-        }
-      );
-  }
 
   submitLogin() {
     this.notify.presentLoader();
@@ -145,29 +129,4 @@ export class LoginPage {
     });
     forgot.present();
   }
-  loginWithGoogle(type) {
-    this.auth.googleLogin().then(res => {
-      console.log('res google res zzz', res);
-      if (res.error) {
-        this.notify.simpleTimeToast(res.error.message);
-      }
-      if (res.user) {
-        this.nav.setRoot(HomePage);
-      }
-    });
-  }
-  loginWithFacebook(type) {
-    this.auth.facebookLogin().then(res => {
-      console.log('res facebook res zzz', res);
-      if (res.error) {
-        this.notify.simpleTimeToast(res.error.message);
-      }
-      if (res.credential && res.credential.providerId == "facebook.com") {
-        this.nav.setRoot(HomePage);
-      } else {
-        this.notify.simpleTimeToast(res.message);
-      }
-    });
-  }
-
 }

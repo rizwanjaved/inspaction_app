@@ -9,13 +9,6 @@ import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import {Storage} from '@ionic/storage';
 import {AuthProvider} from '../providers/auth/auth';
-import { SettingsPage } from "../pages/settings/settings";
-import { PlayPage } from "../pages/play/play";
-import { ProfilePage } from "../pages/profile/profile";
-import { PlayedGamesPage } from "../pages/played-games/played-games";
-import { TopPlayersPage } from "../pages/top-players/top-players";
-import firebase from 'firebase';
-
 
 
 
@@ -105,18 +98,6 @@ export class MyApp {
   goToPage(page) {
     if(page == 'home') {
       this.nav.setRoot(HomePage);
-    }
-    if(page == 'settings') {
-      this.nav.setRoot(SettingsPage);
-    }
-    if(page == 'profile') {
-      this.nav.setRoot(ProfilePage);
-    }
-    if(page == 'playedGames') {
-      this.nav.push(PlayedGamesPage);
-    }
-    if(page == 'topPlayers') {
-      this.nav.push(TopPlayersPage);
     }
     console.log('page is', page);
   }
