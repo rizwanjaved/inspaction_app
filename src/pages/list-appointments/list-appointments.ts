@@ -62,7 +62,7 @@ export class ListAppointmentsPage {
 
   getAllAppointments() {
     this.notify.presentLoader('Appointments list is loading');
-    this.api.postData(null, 'getAllAppointments/')
+    this.api.postData(null, 'getAllAppointments')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
           this.notify.dismissLoader();

@@ -20,7 +20,8 @@ import { NotificationsProvider } from '../notifications/notifications';
 @Injectable()
 export class ApiProvider {
   // public localUrl = 'http://localhost:8000/api/';
-  public localUrl = 'http://192.168.0.103:8000/api/';
+  // public localUrl = 'http://192.168.0.103:8000/api/';
+  public localUrl = 'http://inspectionandregistration.herokuapp.com/api/';
   public connectionErrorMessage = "Aww! No Connection to the server, Please check internet connection";
   public menuButton = "menu";
   public access_token;
@@ -53,11 +54,10 @@ export class ApiProvider {
       })
   }
   headers(token) {
-    var headers = new Headers();
-    // headers.append('Access-Control-Allow-Origin', '*');
-    // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    let headers = new Headers();
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
     headers.append('Accept', 'application/json');
-    // headers.append('content-type', 'application/json');
     headers.append('Authorization', 'Bearer ' + token);
     return new RequestOptions({ headers: headers });
   }
