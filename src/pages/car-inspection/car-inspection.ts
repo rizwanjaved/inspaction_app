@@ -47,7 +47,7 @@ export class CarInspectionPage {
     data.inspection_date = new Date().toLocaleString();
     let fData = Object.assign(data,this.carInspectionForm.value);
     this.notify.presentLoader('Processing Inspection');
-    this.api.postData(fData, 'postInspection/')
+    this.api.postData(fData, 'postInspection')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
           this.notify.dismissLoader();

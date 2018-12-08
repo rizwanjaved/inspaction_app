@@ -52,7 +52,7 @@ export class BookAppointmentPage {
     data.submitted_date = new Date().toLocaleString();
     data.description = this.bookAppointmentForm.value.description;
     this.notify.presentLoader('Processing Appointment');
-    this.api.postData(data, 'postAppointment/')
+    this.api.postData(data, 'postAppointment')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
           this.notify.dismissLoader();
