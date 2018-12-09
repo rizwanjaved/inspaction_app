@@ -26,17 +26,31 @@
     </ion-item>
     
     <ion-item>
-      <ion-label>Car No:</ion-label>
+      <ion-label>Car Type:</ion-label>
       <ion-input type="text" value="{{car?.type.type}}" readonly></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Amount:</ion-label>
-      <ion-input type="number"  formControlName="amount"></ion-input>
+      <ion-input type="number"  value ="{{contravention?.fee}}" readonly ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Due Date:</ion-label>
+      <ion-input type="text" value="{{contravention?.due_date}}" readonly></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-label>Desccrition:</ion-label>
+      <ion-label>Card No *</ion-label>
+          <ion-input type="number"  formControlName="card_no" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <p *ngIf="contraventionForm.get('card_no')?.invalid" class="text-danger">
+          Enter the 16 digit Valid Card No. . !
+      </p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description (optional):</ion-label>
       <ion-textarea formControlName="description"></ion-textarea>
     </ion-item>
 

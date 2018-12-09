@@ -24,6 +24,7 @@ export class CarInspectionPage {
   public carInspectionForm;
   appointment;
   user;
+  showDetails;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -34,8 +35,8 @@ export class CarInspectionPage {
     ) {
     this.carInspectionForm = this.fb.group({
       result: ['', Validators.required],
-      location: ['', Validators.required],
-      details: ['', Validators.required]
+      location: [''],
+      details: ['']
     });
   }
 
@@ -70,9 +71,18 @@ export class CarInspectionPage {
         }
       );
   }
+  result() {
+    let result = this.carInspectionForm.value.result;
+    if (result == 'fail'){
+      this.showDetails = true;
+    } else {
+      this.showDetails = false;
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarInspectionPage', this.navParams.get('appointment'));
+    this.result();
   }
   ionViewDidEnter() {
     this.appointment = this.navParams.get('appointment');

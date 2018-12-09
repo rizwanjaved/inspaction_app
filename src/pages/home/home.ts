@@ -18,6 +18,7 @@ import { MatchesPage } from "../matches/matches";
 import { WatchPage } from "../watch/watch";
 import { AuthProvider } from '../../providers/auth/auth';
 import { ListAppointmentsPage } from "../list-appointments/list-appointments";
+import { ListContraventionsPage } from "../list-contraventions/list-contraventions";
 
 
 
@@ -117,7 +118,7 @@ export class HomePage {
     this.nav.push(InspectionResultPage);
   }
   navToContraventions() {
-    this.nav.push(ContraventionPage);
+    this.nav.push(ListContraventionsPage);
   }
   navToRegistration() {
     this.nav.push(RegiterationPage);

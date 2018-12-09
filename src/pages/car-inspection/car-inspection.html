@@ -29,19 +29,19 @@
     </ion-item>
       <ion-item>
         <ion-label>Result:</ion-label>
-        <ion-select placeholder="Types" formControlName="result">
+        <ion-select placeholder="Types"  formControlName="result" (ionChange)="result()">
           <ion-option value="pass">Pass</ion-option>
           <ion-option value="fail">Fail</ion-option>
         </ion-select>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="showDetails">
         <ion-label>Location:</ion-label>
         <ion-input type="text" placeholder="location" formControlName="location" ></ion-input>
       </ion-item>
-    <ion-item>
-      <ion-label>Details :</ion-label>
-      <ion-textarea formControlName="details"></ion-textarea>
-    </ion-item>
+      <ion-item *ngIf="showDetails">
+        <ion-label>Details :</ion-label>
+        <ion-textarea formControlName="details"></ion-textarea>
+      </ion-item>
     <br>
     <div>
       <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!carInspectionForm.valid">

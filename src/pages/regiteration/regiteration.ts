@@ -21,6 +21,10 @@ export class RegiterationPage {
   user;
   car;
   registrationForm;
+  data = {
+    car_id: null,
+    registration_date: (new Date).toISOString(),
+  };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,8 +34,7 @@ export class RegiterationPage {
     public notify: NotificationsProvider,
   ) {
     this.registrationForm = this.fb.group({
-      late_fee: [''],
-      registration_fee: ['', Validators.required]
+      card_no: ['', Validators.compose([Validators.required, Validators.minLength(16)])]
     });
   }
   ionViewDidEnter() {
@@ -41,16 +44,13 @@ export class RegiterationPage {
     });
     this.storage.get('userCar').then(car => {
       this.car = car;
+      this.data.car_id = car.id;
     })
   }
 
   payRegistration() {
-    let data: any = {};
-    data.car_id = this.car.id;
-    data.late_fee = this.registrationForm.value.late_fee;
-    data.registration_fee = this.registrationForm.value.registration_fee;
     this.notify.presentLoader('Processing Registration');
-    this.api.postData(data, 'registration')
+    this.api.postData(this.data, 'registration')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
           this.notify.dismissLoader();

@@ -30,7 +30,7 @@ export class BookAppointmentPage {
     public notify: NotificationsProvider,
   ) {
     this.bookAppointmentForm = this.fb.group({
-      description: ['', Validators.required]
+      description: ['']
     });
   }
 

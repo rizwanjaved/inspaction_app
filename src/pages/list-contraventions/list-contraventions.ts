@@ -21,59 +21,55 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 
 
-
-
 /**
- * Generated class for the ListAppointmentsPage page.
+ * Generated class for the ListContraventionsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
-  selector: 'page-list-appointments',
-  templateUrl: 'list-appointments.html',
+  selector: 'page-list-contraventions',
+  templateUrl: 'list-contraventions.html',
 })
-export class ListAppointmentsPage {
-  appointments;
-  inspectLink;
+export class ListContraventionsPage {
+  contraventions;
+  userCar;
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    public auth:AuthProvider,
+    public auth: AuthProvider,
     public api: ApiProvider,
     public notify: NotificationsProvider,
     private storage: Storage,
     public alert: AlertController
-  ){
+  ) {
 
   }
+
   ionViewDidEnter() {
-    this.inspectLink = this.navParams.get('inspectLink');
     this.storage.get('accessToken').then((token) => {
       this.api.access_token = token;
-      this.getAllAppointments();
+      this.getAllContraventions();
     }).catch((err) => {
       console.log(err)
     });
-    console.log('  this.inspectLink ', this.inspectLink );
   }
 
 
-  getAllAppointments() {
-    this.notify.presentLoader('Appointments list is loading');
-    this.api.postData(null, 'getAllAppointments')
+  getAllContraventions() {
+    this.notify.presentLoader('Contravention list is loading');
+    this.api.postData(null, 'getAllContraventions')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
           this.notify.dismissLoader();
           this.notify.simpleTimeToast('Some error occured');
         } else {
           let response: any = res ? JSON.parse(res) : 'error';
-        this.appointments = response ? response.appointments : null;
-        console.log('appointments', this.appointments);
+          this.contraventions = response ? response.contraventions : null;
+          console.log('contraventions', this.contraventions);
           this.notify.dismissLoader();
-          if (this.appointments.length == 0) {
+          if (this.contraventions.length == 0) {
             this.showAlert();
           }
         }
@@ -86,8 +82,8 @@ export class ListAppointmentsPage {
   }
   showAlert() {
     const alert = this.alert.create({
-      title: 'Appointments',
-      subTitle: 'Appointment List is empty ! click ok to Go back',
+      title: 'Contravention',
+      subTitle: 'Contravention List is empty ! click ok to Go back',
       buttons: [{
         text: 'OK',
         handler: data => {
@@ -97,11 +93,12 @@ export class ListAppointmentsPage {
     });
     alert.present();
   }
-  viewAppointment(apt) {
-    this.navCtrl.push(ViewAppointmentPage, {appointment:apt})
+  toContravention(cnt) {
+    this.navCtrl.push(ContraventionPage, { conrtravention: cnt })
   }
-  inspect(apt) {
-    this.navCtrl.push(CarInspectionPage, { appointment: apt });
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListContraventionsPage');
   }
 
 }

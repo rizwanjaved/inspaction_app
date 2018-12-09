@@ -22,6 +22,12 @@ export class ContraventionPage {
   public contraventionForm;
   user;
   car;
+  contravention;
+  data = {
+    contravention_id : null,
+    submitted_date : (new Date).toISOString(),
+    description :""
+  };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -31,13 +37,14 @@ export class ContraventionPage {
     public notify: NotificationsProvider,
   ) {
     this.contraventionForm = this.fb.group({
-      amount: ['', Validators.required],
-      description: ['', Validators.required]
+      card_no: ['', Validators.compose([Validators.required, Validators.minLength(16)])],
+      description: ['',]
     });
   }
 
   ionViewDidEnter() {
-    // this.appointment = this.navParams.get('appointment');
+    this.contravention = this.navParams.get('conrtravention');
+    this.data.contravention_id = this.contravention.id;
     this.storage.get('userData').then(user => {
       this.user = user;
     });
@@ -47,12 +54,10 @@ export class ContraventionPage {
   }
 
   payContravention() {
-    let data: any = {};
-    data.car_id = this.car.id;
-    data.fee = this.contraventionForm.value.amount;
-    data.description = this.contraventionForm.value.description;
+    this.data.description = this.contraventionForm.value.description;
     this.notify.presentLoader('Processing Conravention');
-    this.api.postData(data, 'contravention')
+    console.log('data',this.data);
+    this.api.postData(this.data, 'addContravention')
       .subscribe(res => {
         if (res && res.type && res.type == 'error') {
           this.notify.dismissLoader();
@@ -62,11 +67,11 @@ export class ContraventionPage {
           let response: any = res ? JSON.parse(res) : 'error';
           if (response && response.success) {
             this.notify.simpleTimeToast('The Contravention is Submitted Successfully');
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.pop();
           } else {
             this.notify.simpleTimeToast('Contvention not Added');
           }
-          console.log('inspection Page Form', response);
+          console.log('contravention Page Form', response);
         }
       },
         err => {
@@ -77,6 +82,7 @@ export class ContraventionPage {
   }
 
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad ContraventionPage');
   }
 

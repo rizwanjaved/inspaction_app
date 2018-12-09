@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf = 'appointments'>
     <ion-item  *ngFor="let apt of appointments">
       <h2>Car Name : {{ apt.car.car_no}}</h2>
       <p>Car Model : {{ apt.car.model}}</p>

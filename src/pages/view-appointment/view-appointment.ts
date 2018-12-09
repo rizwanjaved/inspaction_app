@@ -47,6 +47,7 @@ export class ViewAppointmentPage {
             } else {
               this.notify.dismissLoader();
               let response: any = res ? JSON.parse(res) : 'error';
+              console.log('ress', response);
               if (response && response.success) {
                 this.appointment = response.appointment;
               } else {
@@ -73,7 +74,7 @@ export class ViewAppointmentPage {
     this.navCtrl.push(CarInspectionPage, {appointment: this.appointment});
   }
   goToHome() {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

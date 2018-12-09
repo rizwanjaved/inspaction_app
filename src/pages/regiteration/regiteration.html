@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>regiteration</ion-title>
+    <ion-title>Car Registration</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,20 +26,26 @@
     </ion-item>
   
     <ion-item>
-      <ion-label>Car No:</ion-label>
+      <ion-label>Car Type:</ion-label>
       <ion-input type="text" value="{{car?.type.type}}" readonly></ion-input>
     </ion-item>
   
-    <ion-item>
-      <ion-label>Late Fee:</ion-label>
-      <ion-input type="number" formControlName="late_fee"></ion-input>
-    </ion-item>
   
     <ion-item>
       <ion-label>Registration Fee:</ion-label>
-      <ion-input type="number" formControlName="registration_fee"></ion-input>
+      <ion-input type="number"  value="{{car?.registration_fee}}" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Card No *</ion-label>
+      <ion-input type="number" formControlName="card_no"></ion-input>
+    </ion-item>
+    <ion-item>
+      <p *ngIf="registrationForm.get('card_no')?.invalid" class="text-danger">
+        Enter the 16 digit Valid Card No. . !
+      </p>
     </ion-item>
   
-    <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!registrationForm.valid">Pay RegistrationForm</button>
+    <button type="submit" ion-button icon-start block color="dark" tappable [disabled]="!registrationForm.valid">Pay Registration</button>
   </form>
 </ion-content>

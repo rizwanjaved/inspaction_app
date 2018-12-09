@@ -65,7 +65,7 @@ export class InspectionResultPage {
 
 
   backToPreviousPage() {
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(HomePage);
   }
 
   ionViewDidLoad() {

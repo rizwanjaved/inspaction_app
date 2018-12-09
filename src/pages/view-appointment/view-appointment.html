@@ -35,6 +35,10 @@
       <ion-label>Booking Date</ion-label>
       <ion-label>{{appointment.booking_date}}</ion-label>
     </ion-item>
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-label>{{appointment.checked_by == null ? 'Pending' : 'Inspected'}}</ion-label>
+    </ion-item>
   </ion-list>
   <div *ngIf ="userType == 'Inspector'">
     <button type="button" ion-button icon-start block color="dark" tappable (click)="inspect()">Inspect</button>
