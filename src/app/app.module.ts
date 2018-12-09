@@ -19,15 +19,8 @@ import {HomePage} from "../pages/home/home";
 import {LoginPage} from "../pages/login/login";
 import {NotificationsPage} from "../pages/notifications/notifications";
 import {RegisterPage} from "../pages/register/register";
-import {LevelsPage} from "../pages/levels/levels";
-import {PlayPage} from "../pages/play/play";
 import {ProfilePage} from "../pages/profile/profile";
 import {ListUsersPage} from "../pages/list-users/list-users";
-import {PlayedGamesPage} from "../pages/played-games/played-games";
-import {PlaySettingsPage} from "../pages/play-settings/play-settings";
-import {TopPlayersPage} from "../pages/top-players/top-players";
-import {MatchesPage} from "../pages/matches/matches";
-import {WatchPage} from "../pages/watch/watch";
 import {CheckBookingPage} from "../pages/check-booking/check-booking";
 import {CarInspectionPage} from "../pages/car-inspection/car-inspection";
 import {BookAppointmentPage} from "../pages/book-appointment/book-appointment";
@@ -62,15 +55,8 @@ import { ApiProvider } from '../providers/api/api';
     LoginPage,
     NotificationsPage,
     RegisterPage,
-    LevelsPage,
-    PlayPage,
     ProfilePage,
     ListUsersPage,
-    PlayedGamesPage,
-    PlaySettingsPage,
-    TopPlayersPage,
-    WatchPage,
-    MatchesPage,
     CheckBookingPage,
     CarInspectionPage,
     BookAppointmentPage,
@@ -103,15 +89,8 @@ import { ApiProvider } from '../providers/api/api';
     LoginPage,
     NotificationsPage,
     RegisterPage,
-    LevelsPage,
-    PlayPage,
     ProfilePage,
     ListUsersPage,
-    PlayedGamesPage,
-    PlaySettingsPage,
-    TopPlayersPage,
-    WatchPage,
-    MatchesPage,
     CheckBookingPage,
     CarInspectionPage,
     BookAppointmentPage,
